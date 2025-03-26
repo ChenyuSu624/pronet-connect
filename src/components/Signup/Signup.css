@@ -1,0 +1,171 @@
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding-top: 80px; /* Adjust padding to account for fixed navbar */
+}
+
+.signup-header {
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  height: 40px;
+}
+
+.signin-link {
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.signup-main {
+  text-align: center;
+  padding: 40px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  max-width: 400px;
+  width: 100%;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.form-group input,
+.form-group select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 94%;
+}
+
+.signup-form .form-group select {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.form-group-inline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.form-group-inline label {
+  flex: 1;
+  /* display: flex; */
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-group-inline input {
+  flex: 1;
+}
+
+.form-group-inline input[type="checkbox"] {
+  float: left;
+  /* margin-right: 10px; */
+  align-self: center; /* Align checkbox in the center */
+  margin-top: 5px;
+}
+
+.create-account-btn {
+  padding: 15px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.social-signup {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.social-signup p {
+  margin-bottom: 10px;
+}
+
+.social-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.google-btn,
+.linkedin-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff; /* Ensure the background color is white */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    color: #333; /* Ensure the text color is visible */
+    line-height: normal; /* Ensure vertical centering */
+    vertical-align: middle;
+    font-size: 15px;
+}
+
+.google-btn {
+  background-color: white; /* Google red */
+}
+
+.linkedin-btn {
+  background-color: white; /* LinkedIn blue */
+}
+
+.google-btn i,
+.linkedin-btn i {
+  margin-right: 8px; /* Add margin to create space between icon and label */
+}
+
+.signup-footer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.signup-footer-text {
+  font-weight: normal; /* Remove bold styling */
+  font-size: 1rem; /* Match the font size of other text */
+  color: #000; /* Ensure consistent color */
+  text-align: center; /* Center the text */
+  margin-top: 10px; /* Add spacing above the text */
+}
+
+.signup-footer-text a {
+  color: #007bff; /* Add a link color */
+  text-decoration: none; /* Remove underline */
+}
+
+.signup-footer-text a:hover {
+  text-decoration: underline; /* Add underline on hover */
+}

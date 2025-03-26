@@ -1,0 +1,274 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f4fc;
+}
+
+.login-panel {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  max-width: 900px;
+  height: 80%;
+  max-height: 600px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: white;
+}
+
+.login-left {
+  flex: 1;
+  background-color: #4A4AFF;
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* Center content horizontally */
+}
+
+.login-left h1 {
+  font-size: 2.2em;
+  margin-bottom: 15px;
+  text-align: center; /* Center the title text */
+  width: 100%; /* Ensure the title takes full width */
+}
+
+.login-left p, .login-left ul, .login-footer {
+  width: 90%; /* Ensure the rest of the content has the same width as the title */
+  text-align: center; /* Center the text */
+}
+
+.login-left ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 15px;
+}
+
+.login-left ul li {
+  margin-bottom: 8px;
+  margin-left: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: left; /* Align items to the left */
+}
+
+.login-left ul li .avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.login-left ul li .icon {
+  font-size: 1.5rem; /* Adjust icon size */
+  color: white; /* Match the text color */
+  margin-right: 10px; /* Add spacing between icon and text */
+}
+
+.login-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center the footer content */
+  margin-top: auto;
+}
+
+.login-footer img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.login-footer span {
+  font-size: 0.9em;
+}
+
+.login-right {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+  border-left: 5px solid #4A4AFF;
+  border-radius: 0 12px 12px 0;
+}
+
+.login-right h2 {
+  font-size: 2.2em;
+  color: #333;
+}
+
+.login-right p {
+  font-size: 1em;
+  margin-bottom: 15px;
+  color: #666;
+}
+
+.login-right form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%; /* Ensure form takes full width */
+}
+
+.login-right label {
+  font-size: 0.8em;
+  margin-bottom: 5px;
+  color: #333;
+  width: 80%; /* Match the width of the input boxes */
+  text-align: left; /* Align text to the left */
+}
+
+.login-right input {
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%; /* Match the width of the input boxes */
+  margin-bottom: 15px;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center; /* Align items in the center */
+  white-space: nowrap; /* Ensure content stays on one line */
+}
+
+.remember-me input[type="checkbox"] {
+  margin-right: 5px; /* Add some space between the checkbox and the label */
+  margin-left: 0; /* Align to the leftmost edge */
+  margin-top: 10px;
+  vertical-align: middle; /* Align checkbox vertically to the center */
+}
+
+.forgot-password-button {
+  font-size: 0.8em; /* Reduced font size */
+  padding: 0; /* Remove padding */
+  width: auto; /* Adjust width */
+  background: none;
+  border: none;
+  color: #4A4AFF;
+  cursor: pointer;
+  text-decoration: none;
+  float: right; /* Float to the right */
+  vertical-align: middle;
+  background-color: transparent;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  display: flex; /* Add flex display */
+  align-items: center; /* Center vertically */
+  margin-top: 10px;
+}
+
+.forgot-password-button:hover {
+  background-color: transparent; /* Ensure no background color on hover */
+  color: #0056b3; /* Optional: Change text color on hover */
+}
+
+.signin-button {
+  width: 80%; /* Match the width of the input boxes */
+  padding: 10px;
+  background-color: #4A4AFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.google-button, .linkedin-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff; /* Ensure the background color is white */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  color: #333; /* Ensure the text color is visible */
+}
+
+.google-button .icon, .linkedin-button .icon {
+  margin-right: 0.5rem;
+  color: #333; /* Ensure the icon color is visible */
+}
+
+.google-button:hover, .linkedin-button:hover {
+  background-color: #f0f0f0;
+}
+
+.google-button span, .linkedin-button span {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333; /* Ensure the text color is visible */
+}
+
+.login-alternatives {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* margin-bottom: 15px; */
+}
+
+.login-alternatives p {
+  margin-bottom: 8px;
+  color: #666;
+}
+
+.linked-buttons {
+  width: 80%; /* Match the width of the input boxes */
+}
+
+.google-button {
+  background-color: white;
+}
+
+.linkedin-button {
+  background-color: white;
+}
+
+.login-right a {
+  color: #4A4AFF;
+  text-decoration: none;
+}
+
+.link-button {
+  background: none;
+  border: none;
+  color: #4A4AFF;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 0;
+  font: inherit;
+}
+
+.signup-link {
+  /* margin-top: 15px; */
+  text-align: center;
+}
+
+.signup-link p {
+  color: #666;
+}
+
+.signup-link a {
+  color: #4A4AFF;
+  text-decoration: none;
+}

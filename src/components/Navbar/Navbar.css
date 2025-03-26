@@ -1,0 +1,103 @@
+.navbar-header {
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative; /* Allow absolute positioning for title */
+  padding: 10px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+.logo-title-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Add spacing between logo and title */
+}
+
+.navbar-signup .navbar-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar-signup .logo-title-container {
+  margin: 0 auto; /* Center the container horizontally */
+  justify-content: center; /* Center the content inside the container */
+}
+
+.logo {
+  height: 40px;
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+.signin-link {
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+.navbar-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar-search {
+  flex: 1;
+  margin: 0 20px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.navbar-profile-icon {
+  font-size: 1.8rem;
+  color: #555;
+  cursor: pointer;
+}
+
+.searchbox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex-grow: 1; /* Allow the search box to take up available space */
+}
+
+.navbar-dashboard-inline {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Add spacing between the search box and profile icon */
+}
+
+/* Ensure responsiveness */
+@media (max-width: 768px) {
+  .navbar-title {
+    font-size: 1.2rem;
+  }
+
+  .logo {
+    height: 30px;
+  }
+
+  .signin-link {
+    font-size: 0.9rem;
+  }
+}

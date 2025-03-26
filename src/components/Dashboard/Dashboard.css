@@ -1,0 +1,538 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+  align-items: center; /* Center align horizontally */
+  justify-content: center; /* Center align vertically */
+  height: 100vh; /* Ensure it takes full viewport height */
+  margin-top: 100px;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f5f5f5;
+}
+
+.search-bar {
+  width: 300px;
+  padding: 5px;
+}
+
+.dashboard-content {
+  display: flex;
+  margin: 20px;
+  flex: 1; /* Allow content to grow and shrink dynamically */
+  overflow: hidden; /* Prevent overflow issues */
+}
+
+.dashboard-sidebar {
+  width: 25%; /* Increased width */
+  padding: 10px;
+  background-color: transparent;
+  flex: 0 0 300px; /* Adjusted fixed width */
+  overflow-y: auto; /* Enable scrolling for sidebars */
+}
+
+.profile-section {
+  text-align: center;
+}
+
+.profile-pic {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.sidebar-menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-menu li {
+  margin: 10px 0;
+  /* text-align: left; */
+}
+
+.dashboard-feed {
+  width: 50%; /* Reduced width */
+  padding: 10px;
+  display: flex;
+  flex-direction: column; /* Align panels vertically */
+  gap: 16px; /* Add gap between panels */
+  flex: 1; /* Make the feed take the remaining space */
+  overflow-y: auto; /* Enable scrolling for the feed */
+  padding: 16px;
+  box-sizing: border-box;
+  padding-top: 10px;
+}
+
+.feed-panel {
+  background-color: white; /* White background for panels */
+  border-radius: 8px; /* Rounded corners */
+  padding: 16px; /* Add padding inside the panel */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add subtle shadow */
+}
+
+.post-input-panel {
+  height: 15vh; /* Dynamic height for post input panel */
+}
+
+.post-panel {
+  flex-grow: 1; /* Allow post panel to grow and fill remaining space */
+}
+
+.post-input {
+  margin-bottom: 20px;
+  margin-top: 0; /* Remove top margin */
+  background-color: white;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.post-input-header {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Space between avatar and input box */
+}
+
+.post-input-avatar {
+  width: 50px; /* Increase avatar size */
+  height: 50px; /* Increase avatar size */
+}
+
+.post-input-box {
+  flex-grow: 1;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 10px 16px;
+  font-size: 14px;
+  outline: none;
+}
+
+.post-input-actions {
+  display: flex;
+  justify-content: space-between;
+  vertical-align: center;
+  align-items: center; /* Vertically center align icons and post button */
+}
+
+.post-input-options {
+  display: flex;
+  gap: 8px; /* Space between option buttons */
+  align-items: center; /* Vertically center align icons */
+}
+
+.post-option-button {
+  background: none;
+  border: none;
+  color: #555;
+  font-size: 18px; /* Increase icon size */
+  cursor: pointer;
+}
+
+.post-option-button:hover {
+  color: #555; /* Ensure no color change on hover */
+  background: none; /* Ensure no background highlight on hover */
+}
+
+.post-submit-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 6px 12px; /* Reduce button size */
+  font-size: 12px; /* Smaller font size */
+  cursor: pointer;
+  width: 120px;
+  transition: background-color 0.2s;
+  align-self: center; /* Ensure vertical alignment */
+}
+
+.post-submit-button:hover {
+  background-color: #0056b3;
+}
+
+.post {
+  background-color: white; /* Set white background for each feed */
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 16px;
+}
+
+.post img {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.post-actions button {
+  margin-right: 10px;
+}
+
+.post-actions {
+  display: flex;
+  align-items: center; /* Align buttons vertically */
+  gap: 4px; /* Reduce gap between buttons */
+  margin-top: 12px;
+  justify-content: flex-start; /* Align buttons to the left */
+  flex-wrap: nowrap; /* Ensure icons stay in one group */
+  overflow: hidden; /* Prevent icons from going outside the panel */
+  width: 100%; /* Ensure actions stay within the feed width */
+  box-sizing: border-box; /* Include padding and border in width calculation */
+}
+
+.dashboard-rightbar {
+  width: 25%; /* Increased width */
+  padding: 10px;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Add gap between panels */
+  height: 100%; /* Ensure it takes full height of the container */
+  flex: 0 0 300px; /* Adjusted fixed width */
+  overflow-y: auto; /* Enable scrolling for sidebars */
+}
+
+.dashboard-rightbar section {
+  margin-bottom: 10px;
+}
+
+.dashboard-rightbar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.dashboard-rightbar ul li {
+  text-align: left; /* Align contents to the left */
+}
+
+.profile-panel, .menu-panel {
+  margin-bottom: 20px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.profile-panel {
+  padding: 16px; /* Add padding for better spacing */
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
+  align-items: center; /* Center content horizontally */
+  justify-content: center; /* Center content vertically */
+  height: auto; /* Adjust height dynamically based on content */
+  max-height: 30vh; /* Limit maximum height based on viewport */
+  overflow-y: auto; /* Enable scrolling if content overflows */
+}
+
+.menu-panel {
+  padding: 16px; /* Add padding for better spacing */
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
+  align-items: flex-start; /* Align content to the left */
+  justify-content: center; /* Center content vertically */
+  height: auto; /* Adjust height dynamically based on content */
+  max-height: 20vh; /* Limit maximum height based on viewport */
+  overflow-y: auto; /* Enable scrolling if content overflows */
+}
+
+.rightbar-panel {
+  background-color: white; /* White background */
+  border-radius: 8px; /* Rounded corners */
+  padding: 16px; /* Add padding inside the panel */
+  height: auto; /* Adjust height dynamically based on content */
+  max-height: none; /* Remove height restriction */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add subtle shadow */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Ensure content is spaced properly */
+  overflow: visible; /* Allow content to be fully visible */
+}
+
+.profile-panel, .menu-panel, .rightbar-panel {
+  display: flex;
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
+  text-align: center; /* Ensure text is centered */
+}
+
+.recommended-jobs-header {
+  display: flex;
+  justify-content: space-between; /* Align items to opposite sides */
+  align-items: center;
+  width: 100%; /* Ensure it spans the full width of the panel */
+}
+
+.recommended-jobs-header h3 {
+  margin: 0; /* Remove extra margin from the heading */
+}
+
+.view-all-link {
+  font-size: 14px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.view-all-link:hover {
+  text-decoration: underline;
+}
+
+.job-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%; /* Match the width of the header */
+}
+
+.job-item {
+  margin-bottom: 16px; /* Add gap between jobs */
+}
+
+.job-title {
+  font-weight: bold; /* Bold the job title */
+  margin-bottom: 4px; /* Add spacing below the title */
+}
+
+.job-company,
+.job-date {
+  margin: 0; /* Ensure no extra margin */
+}
+
+.upcoming-events-header {
+  display: flex;
+  justify-content: space-between; /* Align items to opposite sides */
+  align-items: center;
+  width: 100%; /* Ensure it spans the full width of the panel */
+}
+
+.upcoming-events-header h3 {
+  margin: 0; /* Remove extra margin from the heading */
+}
+
+.event-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%; /* Match the width of the header */
+}
+
+.event-item {
+  margin-bottom: 16px; /* Add gap between events */
+}
+
+.event-title {
+  font-weight: bold; /* Bold the event title */
+  margin-bottom: 4px; /* Add spacing below the title */
+}
+
+.event-time,
+.event-location {
+  margin: 0; /* Ensure no extra margin */
+}
+
+.people-you-may-know-header {
+  display: flex;
+  justify-content: space-between; /* Align header and view all link */
+  align-items: center;
+  width: 100%; /* Ensure it spans the full width of the panel */
+}
+
+.people-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%; /* Match the width of the header */
+}
+
+.people-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.person-item {
+  display: flex;
+  align-items: center; /* Align items vertically */
+  position: relative; /* Enable positioning for the add-icon */
+  margin-bottom: 16px; /* Add gap between people */
+}
+
+.person-info {
+  display: flex;
+  align-items: center; /* Align avatar and details vertically */
+  gap: 12px; /* Space between avatar and details */
+  flex-grow: 1; /* Allow person-info to take available space */
+}
+
+.person-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 40px; /* Adjust size for FaUserCircle */
+  color: #555;
+}
+
+.person-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.person-name {
+  font-weight: bold; /* Bold the person's name */
+  margin: 0;
+}
+
+.person-job {
+  font-size: 12px; /* Smaller font for job details */
+  color: #555;
+  margin: 0;
+}
+
+.add-icon-button {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 18px; /* Icon size */
+  cursor: pointer;
+}
+
+.add-icon-button:hover {
+  color: #0056b3; /* Darker color on hover */
+}
+
+.add-icon {
+  font-size: 20px; /* Adjust size for IoMdPersonAdd */
+  color: #007bff;
+  cursor: pointer;
+  position: absolute; /* Position the icon absolutely */
+  right: 0; /* Align it to the right edge */
+}
+
+.add-icon:hover {
+  color: #0056b3; /* Darker color on hover */
+}
+
+@media (max-height: 600px) {
+  .dashboard-sidebar,
+  .dashboard-rightbar {
+    flex: 0 0 200px; /* Adjust sidebar width for smaller viewports */
+  }
+
+  .post-input-box {
+    font-size: 14px; /* Adjust input font size */
+  }
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.post-avatar {
+  font-size: 40px;
+  color: #555;
+}
+
+.post-user-info {
+  display: flex;
+  flex-direction: column;
+  text-align: left; /* Align content to the left */
+}
+
+.post-user-info h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.post-user-info p {
+  margin: 0;
+  font-size: 12px;
+  color: #777;
+}
+
+.post-time {
+  font-size: 12px;
+  color: #aaa;
+}
+
+.post-content {
+  margin: 8px 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.post-image {
+  width: 100%;
+  border-radius: 8px;
+  margin: 12px 0;
+}
+
+.post-link {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 12px 0;
+}
+
+.post-link-title {
+  font-weight: bold;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.post-link-title:hover {
+  text-decoration: underline;
+}
+
+.post-link-description {
+  font-size: 12px;
+  color: #555;
+  margin-top: 4px;
+}
+
+.post-actions {
+  display: flex;
+  align-items: center; /* Align buttons vertically */
+  margin-top: 12px;
+  justify-content: flex-start; /* Align buttons to the left */
+  flex-wrap: nowrap; /* Ensure icons stay in one group */
+  overflow: hidden; /* Prevent icons from going outside the panel */
+  width: 100%; /* Ensure actions stay within the feed width */
+  box-sizing: border-box; /* Include padding and border in width calculation */
+}
+
+.post-actions button {
+  display: flex;
+  align-items: center; /* Center align icons vertically */
+  justify-content: center; /* Center align icons horizontally */
+  gap: 6px;
+  background: none;
+  border: none;
+  color: #555;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.post-actions button:hover {
+  color: #007bff;
+}
