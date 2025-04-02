@@ -177,6 +177,20 @@
 }
 
 .post-actions button {
+  display: flex;
+  align-items: center; /* Align items vertically */
+  gap: 5px; /* Add spacing between icon and text */
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.post-actions span {
+  display: inline; /* Ensure text stays inline */
+  font-size: 14px; /* Adjust font size if needed */
+}
+
+.post-actions button {
   margin-right: 10px;
 }
 
@@ -283,6 +297,7 @@
 
 .recommended-jobs-header h3 {
   margin: 0; /* Remove extra margin from the heading */
+  padding-bottom: 5px;
 }
 
 .view-all-link {
@@ -294,26 +309,27 @@
 .view-all-link:hover {
   text-decoration: underline;
 }
+.recommended-jobs rightbar-panel{
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
+  justify-content: center; /* Center content vertically */
+  align-items: center;/* Add padding for better spacing */
+}
 
 .job-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  display: block;
   width: 100%; /* Match the width of the header */
+  max-width: 100%; /* Ensure it doesn't exceed the header width */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margin */
 }
 
 .job-item {
-  margin-bottom: 16px; /* Add gap between jobs */
-}
-
-.job-title {
-  font-weight: bold; /* Bold the job title */
-  margin-bottom: 4px; /* Add spacing below the title */
-}
-
-.job-company,
-.job-date {
-  margin: 0; /* Ensure no extra margin */
+  padding: 0px 10px;
+  border-radius: 8px;
+  background-color: #fff;
+  border: none; /* Ensure the border is removed */
+  box-shadow: none; /* Remove the shadow */
 }
 
 .upcoming-events-header {

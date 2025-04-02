@@ -5,6 +5,7 @@ import './Navbar.css';
 
 const Navbar = ({ onSearchChange, isSignupPage }) => {
   const location = useLocation();
+  const isJobBoardPage = location.pathname === '/job-board'; // Check if on the JobBoard page
   const isDashboardPage = location.pathname === '/dashboard'; // Check if on the dashboard page
   const isConnectionsPage = location.pathname === '/connections'; // Check if on the connections page
   const isPeopleUMayKnowPage = location.pathname === '/people-you-may-know'; // Check if on the PeopleUMayKnow page
@@ -30,7 +31,20 @@ const Navbar = ({ onSearchChange, isSignupPage }) => {
             </div>
           </div>
         )}
-        {!isSignupPage && !isDashboardOrConnectionsPage && (
+        {isJobBoardPage && !isSignupPage && (
+          <div className="navbar-dashboard">
+            <div className="navbar-dashboard-inline">
+              <input
+                type="text"
+                placeholder="Search jobs" // Update placeholder for JobBoard
+                className="searchbox"
+                onChange={onSearchChange} // Use onSearchChange for JobBoard
+              />
+              <FaUserCircle className="navbar-profile-icon" />
+            </div>
+          </div>
+        )}
+        {!isSignupPage && !isDashboardOrConnectionsPage && !isJobBoardPage && (
           <>
             <input
               type="text"

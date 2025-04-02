@@ -301,6 +301,109 @@ export const deletePost = async (postId) => {
   }
 };
 
+/**
+ * Like a post by adding the user's ID to the likes array.
+ * @param {string} postId - The ID of the post to like.
+ * @param {string} userId - The ID of the user liking the post.
+ * @returns {Promise<void>}
+ */
+export const likePost = async (postId, userId) => {
+  try {
+    const postRef = doc(db, "feeds", postId);
+    const postSnap = await getDoc(postRef);
+
+    if (!postSnap.exists()) {
+      throw new Error("Post not found");
+    }
+
+    const postLikes = postSnap.data().likes || [];
+    if (!postLikes.includes(userId)) {
+      postLikes.push(userId);
+      await updateDoc(postRef, { likes: postLikes });
+    }
+  } catch (error) {
+    console.error("Error liking post:", error);
+    throw error;
+  }
+};
+
+/**
+ * Fetch jobs from the database, filter them by the same industry as the logged-in user,
+ * and randomly select two jobs.
+ * @param {string} userId - The ID of the logged-in user.
+ * @returns {Promise<Array<Object>>} - Promise resolving to an array of two recommended jobs.
+ */
+export const getRecommendedJobs = async (userId) => {
+  try {
+    // Fetch the logged-in user's data
+    const userDocRef = doc(db, "users", userId);
+    const userDocSnap = await getDoc(userDocRef);
+
+    if (!userDocSnap.exists()) {
+      throw new Error("User not found");
+    }
+
+    const userIndustry = userDocSnap.data().industry || null;
+
+    if (!userIndustry) {
+      console.warn("User's industry is not specified");
+      return [];
+    }
+
+    // Fetch all jobs from the "jobs" collection
+    const jobsSnapshot = await getDocs(collection(db, "jobs"));
+    const allJobs = jobsSnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+
+    // Filter jobs by matching the user's industry
+    const filteredJobs = allJobs.filter((job) => job.industry === userIndustry);
+
+    // Randomly select two jobs
+    const recommendedJobs = filteredJobs.sort(() => 0.5 - Math.random()).slice(0, 2);
+
+    return recommendedJobs;
+  } catch (error) {
+    console.error("Error fetching recommended jobs:", error);
+    throw error;
+  }
+};
+
+/**
+ * Fetch all jobs from the "jobs" collection, sorted by postedDate in descending order.
+ * @returns {Promise<Array<Object>>} - Promise resolving to an array of all jobs.
+ */
+export const getAllJobs = async () => {
+  try {
+    const jobsQuery = query(collection(db, "jobs"), orderBy("postedDate", "desc")); // Sort by postedDate
+    const jobsSnapshot = await getDocs(jobsQuery);
+    const allJobs = jobsSnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    return allJobs;
+  } catch (error) {
+    console.error("Error fetching all jobs:", error);
+    throw error;
+  }
+};
+
+/**
+ * Fetch all unique job locations from the "jobs" collection.
+ * @returns {Promise<Array<string>>} - Promise resolving to an array of unique job locations.
+ */
+export const getAllJobLocations = async () => {
+  try {
+    const jobsSnapshot = await getDocs(collection(db, "jobs"));
+    const locations = new Set();
+    jobsSnapshot.forEach((doc) => {
+      const jobLocation = doc.data().location;
+      if (jobLocation) {
+        locations.add(jobLocation);
+      }
+    });
+    return Array.from(locations); // Convert Set to Array
+  } catch (error) {
+    console.error("Error fetching job locations:", error);
+    throw error;
+  }
+};
+
 export default {
   addUser,
   getAllUsers,
@@ -316,4 +419,8 @@ export default {
   getFeeds, // Export the new function
   addPost, // Export the new function
   deletePost, // Export the new function
+  likePost, // Export the new function
+  getRecommendedJobs, // Export the new function
+  getAllJobs, // Updated function
+  getAllJobLocations, // New function
 };

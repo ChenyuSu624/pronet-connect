@@ -7,6 +7,7 @@ import Signup from './components/Signup/Signup';
 import Dashboard from './components/Dashboard/Dashboard'; // Import Dashboard component
 import Connections from './components/Connections/Connections'; // Import Connections component
 import PeopleUMayKnow from './components/Connections/PeopleUMayKnow'; // Import PeopleUMayKnow component
+import JobBoard from './components/JobBoard/JobBoard'; // Import JobBoard component
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} /> {/* Add Dashboard route */}
           <Route path="/connections" element={<Connections />} /> {/* Add Connections route */}
           <Route path="/people-you-may-know" element={<PeopleUMayKnow />} /> {/* Add PeopleUMayKnow route */}
+          <Route path="/job-board" element={<JobBoard />} /> {/* Add Job Board route */}
         </Routes>
       </div>
     </Router>

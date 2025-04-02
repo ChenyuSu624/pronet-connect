@@ -44,6 +44,48 @@ const LoginPanel = () => {
     navigate('/forgotpassword');
   };
 
+  const handleGoogleLogin = async () => {
+    // try {
+    //   // Replace with the correct API endpoint for Google login
+    //   const googleUser = { id: 'google123', name: 'Google User', email: 'googleuser@example.com' };
+    //   console.log('Google login successful:', googleUser);
+
+    //   // Save user data to the database
+    //   const response = await axios.post('http://localhost:3000/api/auth/google', googleUser);
+    //   console.log('Google user saved:', response.data);
+    //   navigate('/dashboard', { state: { userId: googleUser.id } }); // Redirect to dashboard
+    // } catch (err) {
+    //   if (err.response?.status === 404) {
+    //     console.error('Google login endpoint not found:', err.response.data);
+    //     setError('Google login service is currently unavailable. Please try again later.');
+    //   } else {
+    //     console.error('Google login failed:', err.response?.data || err.message);
+    //     setError('Google login failed. Please try again.');
+    //   }
+    // }
+  };
+
+  const handleLinkedInLogin = async () => {
+    // try {
+    //   // Replace with the correct API endpoint for LinkedIn login
+    //   const linkedInUser = { id: 'linkedin123', name: 'LinkedIn User', email: 'linkedinuser@example.com' };
+    //   console.log('LinkedIn login successful:', linkedInUser);
+
+    //   // Save user data to the database
+    //   const response = await axios.post('http://localhost:3000/api/auth/linkedin', linkedInUser);
+    //   console.log('LinkedIn user saved:', response.data);
+    //   navigate('/dashboard', { state: { userId: linkedInUser.id } }); // Redirect to dashboard
+    // } catch (err) {
+    //   if (err.response?.status === 404) {
+    //     console.error('LinkedIn login endpoint not found:', err.response.data);
+    //     setError('LinkedIn login service is currently unavailable. Please try again later.');
+    //   } else {
+    //     console.error('LinkedIn login failed:', err.response?.data || err.message);
+    //     setError('LinkedIn login failed. Please try again.');
+    //   }
+    // }
+  };
+
   const handleInputChange = (setter) => (e) => {
     setter(e.target.value);
     setInputError(false); // Reset input error state when user modifies input
@@ -112,11 +154,11 @@ const LoginPanel = () => {
           <div className="login-alternatives">
             <p>Or continue with</p>
             <div className="linked-buttons" style={{ display: 'flex', justifyContent: 'space-between', width: '80%' }}>
-              <button className="google-button">
+              <button className="google-button" onClick={handleGoogleLogin}>
                 <FaGoogle className="icon" style={{ fontSize: '18px' }} />
                 <span>Google</span>
               </button>
-              <button className="linkedin-button">
+              <button className="linkedin-button" onClick={handleLinkedInLogin}>
                 <FaLinkedin className="icon" style={{ fontSize: '18px' }} />
                 <span>LinkedIn</span>
               </button>

@@ -1,77 +1,157 @@
-import React from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
+import { useLocation } from 'react-router-dom';
+import { getAllJobs, getAllJobLocations } from '../../services/userService'; // Import new function
+import Navbar from '../Navbar/Navbar'; // Import Navbar
 import './JobBoard.css';
 
 const JobBoard = () => {
-  const jobs = [
-    {
-      title: 'Senior Product Designer',
-      company: 'Google',
-      location: 'San Francisco, CA',
-      type: 'Full-time',
-      mode: 'Remote',
-      salary: '$120k - $180k',
-    },
-    {
-      title: 'Frontend Developer',
-      company: 'Microsoft',
-      location: 'Seattle, WA',
-      type: 'Full-time',
-      mode: 'Hybrid',
-      salary: '$90k - $140k',
-    },
-    {
-      title: 'iOS Developer',
-      company: 'Apple',
-      location: 'Cupertino, CA',
-      type: 'Full-time',
-      mode: 'On-site',
-      salary: '$140k - $200k',
-    },
-  ];
+  const [jobs, setJobs] = useState([]);
+  const [locations, setLocations] = useState([]); // State for job locations
+  const [currentPage, setCurrentPage] = useState(1);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [salaryRange, setSalaryRange] = useState([0, 100000]);
+  const [industry, setIndustry] = useState('');
+  const [locationFilter, setLocationFilter] = useState('');
+  const [jobType, setJobType] = useState('');
+  const jobsPerPage = 2;
+  const location = useLocation();
+  const userId = location.state?.userId;
+
+  useEffect(() => {
+    getAllJobs()
+      .then((fetchedJobs) => setJobs(fetchedJobs))
+      .catch((error) => console.error('Failed to fetch jobs:', error));
+
+    getAllJobLocations()
+      .then((fetchedLocations) => setLocations(fetchedLocations))
+      .catch((error) => console.error('Failed to fetch job locations:', error));
+  }, []);
+
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const handleSalaryChange = (event) => {
+    const value = Number(event.target.value);
+    const isMin = event.target.id === 'salary-min';
+    setSalaryRange((prevRange) => {
+      return isMin ? [value, prevRange[1]] : [prevRange[0], value];
+    });
+  };
+
+  const filteredJobs = useMemo(() => {
+    return jobs.filter((job) => {
+      const matchesTitle = job.title.toLowerCase().includes(searchQuery.toLowerCase());
+      const matchesSalary = job.salary >= salaryRange[0] && job.salary <= salaryRange[1];
+      const matchesIndustry = industry ? job.industry === industry : true;
+      const matchesLocation = locationFilter ? job.location === locationFilter : true;
+      const matchesType = jobType ? job.type === jobType : true;
+      return matchesTitle && matchesSalary && matchesIndustry && matchesLocation && matchesType;
+    });
+  }, [jobs, searchQuery, salaryRange, industry, locationFilter, jobType]); // Dependencies for dynamic updates
+
+  const totalPages = Math.ceil(filteredJobs.length / jobsPerPage);
+  const displayedJobs = filteredJobs.slice((currentPage - 1) * jobsPerPage, currentPage * jobsPerPage);
+
+  useEffect(() => {
+    setCurrentPage(1); // Reset to the first page when filters change
+  }, [filteredJobs]);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
 
   return (
-    <div className="job-board">
-      <div className="filters">
-        <h3>Filters</h3>
-        <div>
-          <h4>Experience Level</h4>
-          <label><input type="checkbox" /> Entry Level</label>
-          <label><input type="checkbox" /> Mid Level</label>
-          <label><input type="checkbox" /> Senior Level</label>
-        </div>
-        <div>
-          <h4>Job Type</h4>
-          <label><input type="checkbox" /> Full-time</label>
-          <label><input type="checkbox" /> Part-time</label>
-          <label><input type="checkbox" /> Contract</label>
-          <label><input type="checkbox" /> Internship</label>
-        </div>
-        <div>
-          <h4>Salary Range</h4>
-          <label><input type="checkbox" /> $0 - $50k</label>
-          <label><input type="checkbox" /> $50k - $100k</label>
-          <label><input type="checkbox" /> $100k - $150k</label>
-          <label><input type="checkbox" /> $150k+</label>
-        </div>
-      </div>
-      <div className="job-list">
-        {jobs.map((job, index) => (
-          <div key={index} className="job-card">
-            <div className="job-header">
-              <h4>{job.title}</h4>
-              <span>{job.company} • {job.location}</span>
-            </div>
-            <div className="job-details">
-              <span className="job-type">{job.type}</span>
-              <span className={`job-mode ${job.mode.toLowerCase()}`}>{job.mode}</span>
-              <span className="job-salary">{job.salary}</span>
-            </div>
-            <button className="apply-button">Apply Now</button>
+    <>
+      <Navbar onSearchChange={handleSearchChange} /> {/* Pass onSearchChange prop */}
+      <div className="job-board-container">
+        <div className="left-panel">
+          <h2>Filters</h2>
+          <div className="filter-section">
+            {/* <label htmlFor="salary-min">Minimum Salary:</label>
+            <input
+              type="range"
+              id="salary-min"
+              min="0"
+              max="200000"
+              step="1000"
+              value={salaryRange[0]}
+              onChange={handleSalaryChange}
+            />
+            <label htmlFor="salary-max">Maximum Salary:</label> */}
+            <input
+              type="range"
+              id="salary-max"
+              min="0"
+              max="200000"
+              step="1000"
+              value={salaryRange[1]}
+              onChange={handleSalaryChange}
+            />
+            <p>
+              Salary: ${salaryRange[0]} - ${salaryRange[1]}
+            </p>
           </div>
-        ))}
-        <button className="load-more">Load More Jobs</button>
+          <div className="filter-section">
+            <label htmlFor="industry">Industry:</label>
+            <select id="industry" value={industry} onChange={(e) => setIndustry(e.target.value)}>
+              <option value="">All</option>
+              <option value="Technology">Technology</option> {/* Match the database value */}
+              <option value="Finance">Finance</option>
+              <option value="Healthcare">Healthcare</option>
+              {/* Add more industries as needed */}
+            </select>
+          </div>
+          <div className="filter-section">
+            <label htmlFor="location">Location:</label>
+            <select id="location" value={locationFilter} onChange={(e) => setLocationFilter(e.target.value)}>
+              <option value="">All</option>
+              {locations.map((loc) => (
+                <option key={loc} value={loc}>
+                  {loc}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="filter-section">
+            <label htmlFor="job-type">Job Type:</label>
+            <select id="job-type" value={jobType} onChange={(e) => setJobType(e.target.value)}>
+              <option value="">All</option>
+              <option value="Full-time">Full-time</option>
+              <option value="Part-time">Part-time</option>
+              <option value="Contract">Contract</option>
+              {/* Add more job types as needed */}
+            </select>
+          </div>
+        </div>
+        <div className="right-panel">
+          <h1>Job Board</h1>
+          <ul className="job-list">
+            {displayedJobs.map((job) => (
+              <li className="job-item" key={job.id}>
+                <h3>{job.title || 'Unknown Job Title'}</h3>
+                <p>{job.company || 'Unknown Company'} • {job.location || 'Unknown Location'}</p>
+                <p>Posted {job.postedDate || 'Unknown Date'}</p>
+                <p><strong>Description:</strong> {job.description || 'No description available'}</p>
+                <p><strong>Salary:</strong> ${job.salary || 'Not specified'}</p>
+                <p><strong>Skills Required:</strong> {job.skills?.join(', ') || 'Not specified'}</p>
+              </li>
+            ))}
+          </ul>
+          <div className="pagination">
+            {Array.from({ length: totalPages }, (_, index) => (
+              <button
+                key={index + 1}
+                className={`page-button ${currentPage === index + 1 ? 'active' : ''}`}
+                onClick={() => handlePageChange(index + 1)}
+              >
+                {index + 1}
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

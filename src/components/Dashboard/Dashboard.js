@@ -4,7 +4,7 @@ import Navbar from '../Navbar/Navbar';
 import { FaUserCircle, FaPhotoVideo, FaVideo, FaCalendarAlt, FaThumbsUp, FaCommentAlt, FaShare } from 'react-icons/fa'; // Import required icons
 import { IoMdPersonAdd } from 'react-icons/io'; // Import IoMdPersonAdd icon
 import { IoTrashOutline } from "react-icons/io5"; // Import IoTrashOutline
-import { getUserById, getNonConnections, sendFriendRequest, getFeeds, addPost, deletePost } from '../../services/userService'; // Use named import for getUserById, getNonConnections, sendFriendRequest, getFeeds, addPost, and deletePost
+import { getUserById, getNonConnections, sendFriendRequest, getFeeds, addPost, deletePost, getRecommendedJobs, likePost } from '../../services/userService'; // Use named import for getUserById, getNonConnections, sendFriendRequest, getFeeds, addPost, deletePost, getRecommendedJobs, and likePost
 import './Dashboard.css';
 
 const Dashboard = () => {
@@ -14,6 +14,7 @@ const Dashboard = () => {
   const [currentPage, setCurrentPage] = useState(1); // Ensure the page number starts at 1
   const itemsPerPage = 4; // Number of feeds per page
   const [postContent, setPostContent] = useState(""); // State to store new post content
+  const [recommendedJobs, setRecommendedJobs] = useState([]); // State to store recommended jobs
   const navigate = useNavigate(); // Initialize navigate function
   const location = useLocation(); // Access navigation state
   const userId = location.state?.userId; // Retrieve user ID from state
@@ -46,6 +47,13 @@ const Dashboard = () => {
 
     // Fetch all feeds sorted by timestamp
     fetchFeeds();
+
+    // Fetch recommended jobs
+    getRecommendedJobs(userId).then((jobs) => {
+      setRecommendedJobs(jobs); // Set recommended jobs
+    }).catch((error) => {
+      console.error("Failed to fetch recommended jobs:", error);
+    });
   }, [userId, navigate]);
 
   const fetchFeeds = async () => {
@@ -129,6 +137,21 @@ const Dashboard = () => {
       setAllFeeds((prevFeeds) => prevFeeds.filter((feed) => feed.id !== postId)); // Remove the post from all feeds
     } catch (error) {
       console.error("Failed to delete post:", error);
+    }
+  };
+
+  const handleLikePost = async (postId) => {
+    try {
+      await likePost(postId, userId); // Update the likes in the database
+      setAllFeeds((prevFeeds) =>
+        prevFeeds.map((feed) =>
+          feed.id === postId
+            ? { ...feed, likes: [...(feed.likes || []), userId] } // Update likes locally
+            : feed
+        )
+      );
+    } catch (error) {
+      console.error("Failed to like post:", error);
     }
   };
 
@@ -254,9 +277,15 @@ const Dashboard = () => {
                 <p className="post-content">{feed.content}</p>
                 {feed.image && <img src={feed.image} alt="Post" className="post-image" />}
                 <div className="post-actions">
-                  <button><FaThumbsUp /> {feed.likes?.length || 0} Likes</button>
-                  <button><FaCommentAlt /> {feed.comments?.length || 0} Comments</button>
-                  <button><FaShare /> Share</button>
+                  <button onClick={() => handleLikePost(feed.id)}>
+                    <FaThumbsUp /> <span>{feed.likes?.length || 0} Likes</span>
+                  </button>
+                  <button>
+                    <FaCommentAlt /> <span>{feed.comments?.length || 0} Comments</span>
+                  </button>
+                  <button>
+                    <FaShare /> <span>Share</span>
+                  </button>
                 </div>
               </div>
             ))}
@@ -283,19 +312,25 @@ const Dashboard = () => {
           <section className="recommended-jobs rightbar-panel">
             <div className="recommended-jobs-header">
               <h3>Recommended Jobs</h3>
-              <a href="#" className="view-all-link">View all</a>
+              <a
+                href="#"
+                className="view-all-link"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate('/job-board', { state: { userId } }); // Navigate to Job Board page with userId
+                }}
+              >
+                View all
+              </a>
             </div>
             <ul className="job-list">
-              <li className="job-item">
-                <p className="job-title">Senior UX Designer</p>
-                <p className="job-company">Adobe • San Francisco, CA</p>
-                <p className="job-date">Posted 2 days ago</p>
-              </li>
-              <li className="job-item">
-                <p className="job-title">Product Manager</p>
-                <p className="job-company">Spotify • Remote</p>
-                <p className="job-date">Posted 3 days ago</p>
-              </li>
+              {recommendedJobs.map((job) => (
+                <li className="job-item" key={job.id}>
+                  <p className="job-title" style={{ fontWeight: 'bold' }}>{job.title || "Unknown Job Title"}</p>
+                  <p className="job-company" style={{ fontSize: '0.9em' }}>{job.company || "Unknown Company"} • {job.location || "Unknown Location"}</p>
+                  <p className="job-date" style={{ fontSize: '0.9em' }}>Posted {job.postedDate || "Unknown Date"}</p>
+                </li>
+              ))}
             </ul>
           </section>
           <section className="upcoming-events rightbar-panel">

@@ -1,3 +1,39 @@
+.job-board-container {
+  display: flex;
+  flex-direction: row; /* Arrange panels horizontally */
+  gap: 20px;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  height: auto; /* Adjust height to fit content */
+  max-width: 1200px; /* Set a maximum width for the container */
+  margin: 0 auto; /* Center the container horizontally */
+}
+
+.left-panel {
+  flex: 1; /* Adjust width as needed */
+  background-color: #f9f9f9;
+  padding: 20px; /* Ensure consistent padding */
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+  overflow: hidden; /* Prevent content from overflowing */
+  border-right: 1px solid #ccc; /* Optional: Add a separator */
+  min-width: 250px; /* Minimum width for left panel */
+  min-height: 600px; /* Remove fixed minimum height */
+}
+
+.right-panel {
+  flex: 3; /* Adjust width as needed */
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  min-width: 600px; /* Minimum width for right panel */
+  min-height: 600px; /* Remove fixed minimum height */
+  display: flex;
+  flex-direction: column; /* Arrange content vertically */
+  justify-content: space-between; /* Ensure pagination stays at the bottom */
+}
+
 .job-board {
   display: flex;
   gap: 20px;
@@ -24,8 +60,18 @@
   margin: 5px 0;
 }
 
+.filter-section {
+  margin-bottom: 20px; /* Add space between each filter section */
+}
+
+.filter-section label {
+  display: block; /* Ensure labels are displayed above the dropdown */
+  margin-bottom: 5px; /* Add spacing between label and dropdown */
+}
+
 .job-list {
-  width: 75%;
+  list-style: none;
+  padding: 0;
 }
 
 .job-card {
@@ -34,6 +80,25 @@
   border-radius: 8px;
   padding: 15px;
   margin-bottom: 15px;
+}
+
+.job-item {
+  margin-bottom: 20px;
+  padding: 20px 50px; /* Reduce padding on left and right */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.job-item h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+
+.job-item p {
+  margin: 7px 0;
+  color: #555;
 }
 
 .job-header h4 {
@@ -101,4 +166,42 @@
 
 .load-more:hover {
   background: #e0e0e0;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: auto; /* Push pagination to the bottom */
+  gap: 5px; /* Add spacing between buttons */
+  overflow: hidden; /* Collapse page numbers */
+}
+
+.page-button {
+  margin: 0;
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+  color: #aaa; /* Light gray font for unselected buttons */
+}
+
+.page-button.active {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+}
+
+.page-button:hover {
+  background-color: #0056b3;
+  color: #fff;
+}
+
+select {
+  width: 100%; /* Make all dropdowns take full width of their container */
+  height: 40px; /* Set a consistent height for all dropdowns */
+  padding: 5px; /* Add padding for better appearance */
+  border: 1px solid #ccc; /* Add a border for consistency */
+  border-radius: 4px; /* Add rounded corners */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
