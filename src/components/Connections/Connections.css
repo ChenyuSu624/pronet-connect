@@ -1,0 +1,368 @@
+.connections-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: calc(100vh - 80px); /* Adjust height to take more space */
+  margin-top: 150px; /* Add 20px space below the Navbar */
+  width: 1800px; /* Fixed width */
+  margin-left: auto; /* Center horizontally */
+  margin-right: auto; /* Center horizontally */
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.connections-content {
+  width: 80%;
+  margin-top: 20px;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.connections-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.connection-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.connection-card {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  justify-content: space-between; /* Ensure content is spaced properly */
+  align-items: flex-start; /* Align content to the left */
+  gap: 0.5rem; /* Add spacing between sections */
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  background-color: #fff;
+  width: 300px; /* Fixed width */
+  height: 220px; /* Adjust height to ensure space for actions */
+  position: relative; /* Enable positioning for child elements */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+}
+
+.connection-avatar {
+  font-size: 40px;
+  color: #555;
+  flex-shrink: 0; /* Prevent shrinking */
+  padding: 0 10px;
+  align-self: flex-start; /* Align avatar to the top-left */
+}
+
+.connection-info {
+  display: flex;
+  flex-direction: column; /* Stack details vertically */
+  align-items: flex-start; /* Align content to the left */
+  width: 100%; /* Ensure it spans the full width */
+  padding: 0 20px 10px 20px; /* Increase left and right padding to 20px */
+  gap: 12px;
+  flex-grow: 1;
+}
+
+.connection-details {
+  float: left; /* Float content to the left */
+  text-align: left; /* Align text to the left */
+  padding: 0 20px 10px 20px; /* Add 10px padding on the left and right */
+  display: flex;
+  flex-direction: column;
+}
+
+.connection-info h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+  display: inline; /* Ensure it stays inline with the avatar */
+}
+
+.connection-info p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.connection-location {
+  font-size: 13px; /* Smaller font size for location */
+  color: #777; /* Subtle color for location text */
+  display: flex; /* Align icon and text */
+  align-items: center; /* Vertically align icon and text */
+  margin-top: 4px; /* Add spacing above the location */
+}
+
+.connection-name {
+  font-weight: bold;
+  margin: 0;
+}
+
+.connection-job {
+  font-size: 12px;
+  color: #555;
+  margin: 0;
+}
+
+.connection-actions {
+  display: flex;
+  justify-content: center; /* Center-align buttons horizontally */
+  align-items: center; /* Center-align buttons vertically */
+  gap: 10px; /* Add spacing between buttons */
+  position: absolute; /* Position actions at the bottom */
+  bottom: 10px; /* Add spacing from the bottom edge */
+  left: 55%; /* Center horizontally */
+  transform: translateX(-50%); /* Adjust to center horizontally */
+  width: 90%; /* Ensure it spans most of the card width */
+}
+
+.message-button {
+  background-color: transparent; /* Remove background */
+  color: #007bff; /* Blue font color */
+  border: none;
+  padding: 0; /* Remove padding */
+  cursor: pointer;
+  font-size: 14px; /* Smaller font size */
+  display: flex; /* Align icon and text */
+  align-items: center; /* Vertically align icon and text */
+  margin-left: 20px; /* Push to the right */
+}
+
+.message-button:hover {
+  background-color: transparent; /* Ensure no background color on hover */
+  text-decoration: none; /* Remove underline on hover */
+}
+
+.remove-button {
+  background-color: transparent; /* Remove background */
+  color: #ff0000; /* Red font color */
+  border: none;
+  padding: 0; /* Remove padding */
+  cursor: pointer;
+  font-size: 14px; /* Smaller font size */
+  display: flex; /* Align icon and text */
+  align-items: center; /* Vertically align icon and text */
+}
+
+.remove-button:hover {
+  background-color: transparent; /* Ensure no background color on hover */
+  text-decoration: none; /* Remove underline on hover */
+}
+
+.more-options {
+  font-size: 20px;
+  color: #555;
+  cursor: pointer;
+}
+
+.add-icon {
+  font-size: 14px; /* Smaller font size */
+  color: #007bff;
+  cursor: pointer;
+  padding: 4px 8px; /* Smaller padding */
+  border: 1px solid #007bff; /* Add a border */
+  border-radius: 4px; /* Rounded corners */
+  background-color: transparent; /* Transparent background */
+}
+
+.add-icon:hover {
+  color: #0056b3;
+  border-color: #0056b3; /* Change border color on hover */
+}
+
+.add-icon-people-umayknow {
+  font-size: 12px; /* Smaller font size */
+  color: #007bff;
+  cursor: pointer;
+  padding: 4px 8px; /* Smaller padding */
+  border: 1px solid #007bff; /* Add a border */
+  border-radius: 4px; /* Rounded corners */
+  background-color: transparent; /* Transparent background */
+  text-align: center; /* Center-align text inside the button */
+  width: auto; /* Ensure the button width adjusts to its content */
+  min-width: 80px; /* Set a minimum width */
+  margin: 0 auto; /* Center the button horizontally */
+}
+
+.add-icon-people-umayknow:hover {
+  color: #007bff; /* Keep the same color on hover */
+  border-color: #007bff; /* Keep the same border color on hover */
+  background-color: transparent; /* Ensure no background color on hover */
+}
+
+.connections-panel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 60%;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat h2 {
+  margin: 0;
+  font-size: 24px;
+  color: #333;
+}
+
+.stat p {
+  margin: 5px 0 0;
+  color: #777;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.add-connection-button,
+.filter-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-connection-button:hover,
+.filter-button:hover {
+  background-color: #0056b3;
+}
+
+.sort-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Add spacing between label and dropdown */
+  margin-bottom: 20px; /* Add spacing below the dropdown */
+}
+
+.sort-select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.sort-dropdown select {
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.pagination-button {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #007bff;
+}
+
+.pagination-button:hover {
+  background-color: #f0f0f0;
+}
+
+.pagination-button.active {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.pagination-button:disabled {
+  background-color: #f9f9f9;
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Pagination Controls for PeopleUMayKnow */
+.pagination-controls-people-umayknow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.pagination-button-people-umayknow {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ddd;
+  background-color: white; /* Default white background */
+  color: #007bff;
+  cursor: pointer;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.pagination-button-people-umayknow:hover {
+  background-color: #f0f0f0; /* Light gray on hover */
+}
+
+.pagination-button-people-umayknow.active {
+  background-color: #4a90e2; /* Blue background for active page */
+  color: white; /* White text for active page */
+  border-color: #4a90e2;
+}
+
+.pagination-ellipsis {
+  padding: 0.5rem;
+  color: #666;
+}
+
+/* Pagination Controls for Connections */
+.pagination-controls-connections {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.pagination-button-connections {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ddd;
+  background-color: white; /* Default white background */
+  color: #007bff;
+  cursor: pointer;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.pagination-button-connections:hover {
+  background-color: #f0f0f0; /* Light gray on hover */
+}
+
+.pagination-button-connections.active {
+  background-color: #4a90e2; /* Blue background for active page */
+  color: white; /* White text for active page */
+  border-color: #4a90e2;
+}
+
+.pagination-ellipsis {
+  padding: 0.5rem;
+  color: #666;
+}

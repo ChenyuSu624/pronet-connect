@@ -132,6 +132,11 @@
   border-radius: 5px;
 }
 
+input.input-error {
+  border: 2px solid red !important; /* Add !important to ensure it overrides other styles */
+  background-color: #ffe6e6; /* Optional: Add a light red background for better visibility */
+}
+
 .login-options {
   display: flex;
   justify-content: space-between;

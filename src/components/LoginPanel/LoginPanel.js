@@ -10,13 +10,16 @@ const LoginPanel = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [inputError, setInputError] = useState(false); // State to track input error
 
   const handleSignIn = async (e) => {
     e.preventDefault(); // Prevent form submission from reloading the page
     setError(''); // Clear any previous error messages
+    setInputError(false); // Reset input error state
 
     if (!email || !password) {
       setError('Email and password are required');
+      setInputError(true); // Highlight input boxes in red
       return;
     }
 
@@ -24,10 +27,11 @@ const LoginPanel = () => {
       const user = await loginUser(email, password);
       console.log('Sign-in successful:', user);
       // Redirect to the dashboard or another page after successful login
-      navigate('/dashboard');
+      navigate('/dashboard', { state: { userId: user.id } }); // Pass user ID to Dashboard
     } catch (err) {
       console.error('Sign-in failed:', err.message);
       setError(err.message); // Display error message to the user
+      setInputError(true); // Highlight input boxes in red
     }
   };
 
@@ -38,6 +42,11 @@ const LoginPanel = () => {
       return;
     }
     navigate('/forgotpassword');
+  };
+
+  const handleInputChange = (setter) => (e) => {
+    setter(e.target.value);
+    setInputError(false); // Reset input error state when user modifies input
   };
 
   return (
@@ -74,14 +83,16 @@ const LoginPanel = () => {
               type="text" 
               placeholder="Enter your email" 
               value={email} 
-              onChange={(e) => setEmail(e.target.value)} 
+              onChange={handleInputChange(setEmail)} // Use handleInputChange
+              className={`login-input ${inputError ? 'input-error' : ''}`} 
             />
             <label>Password</label>
             <input 
               type="password" 
               placeholder="Enter your password" 
               value={password} 
-              onChange={(e) => setPassword(e.target.value)} 
+              onChange={handleInputChange(setPassword)} // Use handleInputChange
+              className={`login-input ${inputError ? 'input-error' : ''}`} 
             />
             <div className="login-options">
               <div className="remember-me">

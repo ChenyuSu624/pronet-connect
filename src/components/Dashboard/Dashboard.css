@@ -22,6 +22,7 @@
 }
 
 .dashboard-content {
+  width: 1200px;
   display: flex;
   margin: 20px;
   flex: 1; /* Allow content to grow and shrink dynamically */
@@ -53,7 +54,7 @@
 
 .sidebar-menu li {
   margin: 10px 0;
-  /* text-align: left; */
+  cursor: pointer; /* Ensure the cursor is a pointer for menu items */
 }
 
 .dashboard-feed {
@@ -164,7 +165,8 @@
   background-color: white; /* Set white background for each feed */
   margin-bottom: 20px;
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   margin-bottom: 16px;
 }
@@ -444,6 +446,7 @@
   align-items: center;
   gap: 12px;
   margin-bottom: 8px;
+  position: relative; /* Enable positioning for the delete icon */
 }
 
 .post-avatar {
@@ -535,4 +538,75 @@
 
 .post-actions button:hover {
   color: #007bff;
+}
+
+.events-feed {
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px 10px;
+  border-radius: 8px;
+}
+
+.delete-post-icon {
+  color: red;
+  font-size: 20px;
+  cursor: pointer;
+  transition: none; /* Disable hover effects */
+  position: absolute; /* Position the icon absolutely */
+  right: 0; /* Align it to the right edge */
+}
+
+.delete-post-icon:hover {
+  color: red; /* Ensure no color change on hover */
+}
+
+.load-more-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  margin: 10px auto;
+  display: block;
+  transition: background-color 0.2s;
+}
+
+.load-more-button:hover {
+  background-color: #0056b3;
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.page-number-button {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #555; /* Dark gray font for other page buttons */
+}
+
+.page-number-button.active {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+}
+
+.page-number-button:hover:not(.active) {
+  background-color: #f0f0f0;
+  color: #333; /* Slightly darker gray on hover */
+}
+
+.page-nav-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
 }

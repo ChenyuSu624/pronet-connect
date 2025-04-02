@@ -29,10 +29,10 @@ const Signup = () => {
 
     const userData = {
       ...formData,
-      bio: "", // Default value for bio
       connections: [], // Default value for connections
-      profilePicture: "", // Default value for profilePicture
       profileViews: 0, // Default value for profileViews
+      pendingFriendRequests: [], // Default value for pendingFriendRequests
+      appliedJobs: [], // Default value for appliedJobs
     };
 
     try {
