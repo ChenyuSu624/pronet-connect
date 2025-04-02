@@ -16,7 +16,7 @@ const Connections = () => {
   const [sortCriteria, setSortCriteria] = useState('name'); // State for sorting criteria
   const [searchQuery, setSearchQuery] = useState(''); // State for search query
   const [currentPage, setCurrentPage] = useState(1); // State for current page
-  const itemsPerPage = 12; // Maximum cards per page
+  const itemsPerPage = 6; // Maximum cards per page
 
   useEffect(() => {
     if (userId) {
