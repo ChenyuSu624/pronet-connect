@@ -28,15 +28,21 @@ export const getAllUsers = async () => {
 // Get a single user by ID
 export const getUserById = async (userId) => {
   try {
+    if (!userId) {
+      throw new Error("Invalid userId: userId is undefined or null");
+    }
+
     const docRef = doc(db, "users", userId);
     const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
-      return { id: docSnap.id, ...docSnap.data() };
-    } else {
-      throw new Error("User not found");
+
+    if (!docSnap.exists()) {
+      throw new Error(`User with ID ${userId} not found`);
     }
+
+    return { id: docSnap.id, ...docSnap.data() };
   } catch (error) {
-    throw new Error("Error fetching user: " + error.message);
+    console.error("Error fetching user:", error);
+    throw error;
   }
 };
 
@@ -410,11 +416,76 @@ export const getAllJobLocations = async () => {
  */
 export const getAllEvents = async () => {
   try {
-    const eventsSnapshot = await getDocs(collection(db, "events"));
-    const events = eventsSnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-    return events;
+    const eventsSnapshot = await getDocs(collection(db, "events")); // Fetch all documents from the "events" collection
+    const events = eventsSnapshot.docs.map(doc => ({
+      id: doc.id, // Include the document ID
+      ...doc.data() // Spread the document data
+    }));
+    return events; // Return the array of events
   } catch (error) {
-    console.error("Error fetching events:", error);
+    console.error("Error fetching all events:", error); // Log any errors
+    throw new Error("Failed to fetch events from the database."); // Throw a descriptive error
+  }
+};
+
+/**
+ * Fetch attended events for a specific user.
+ * @param {string} userId - The ID of the user.
+ * @returns {Promise<Array<Object>>} - Promise resolving to an array of attended events.
+ */
+export const getAttendedEvents = async (userId) => {
+  try {
+    // Fetch user data using getUserById
+    const userData = await getUserById(userId);
+
+    // Return attendedEvents or an empty array if not present
+    console.log("Fetched attended events:", userData.attendedEvents);
+    return Array.isArray(userData.attendedEvents) ? userData.attendedEvents : [];
+  } catch (error) {
+    console.error("Error fetching attended events:", error);
+    throw error;
+  }
+};
+
+/**
+ * Cancel attendance for a specific event.
+ * @param {string} userId - The ID of the user.
+ * @param {string} eventId - The ID of the event.
+ * @returns {Promise<void>}
+ */
+export const cancelAttendance = async (userId, eventId) => {
+  try {
+    // Remove the event from the user's attendedEvents
+    const userDocRef = doc(db, "users", userId);
+    const userDocSnap = await getDoc(userDocRef);
+    const userAttendedEvents = userDocSnap.data().attendedEvents || [];
+    const updatedUserAttendedEvents = userAttendedEvents.filter(id => id !== eventId);
+    await updateDoc(userDocRef, { attendedEvents: updatedUserAttendedEvents });
+
+    // Remove the user from the event's attendees
+    const eventDocRef = doc(db, "events", eventId);
+    const eventDocSnap = await getDoc(eventDocRef);
+    const eventAttendees = eventDocSnap.data().attendees || [];
+    const updatedEventAttendees = eventAttendees.filter(id => id !== userId);
+    await updateDoc(eventDocRef, { attendees: updatedEventAttendees });
+  } catch (error) {
+    console.error("Error canceling attendance:", error);
+    throw error;
+  }
+};
+
+/**
+ * Update a document in the database.
+ * @param {string} docId - The ID of the document to update.
+ * @param {Object} updatedData - The data to update in the document.
+ * @returns {Promise<void>}
+ */
+export const updateEventDoc = async (docId, updatedData) => {
+  try {
+    const docRef = doc(db, "events", docId);
+    await updateDoc(docRef, updatedData);
+  } catch (error) {
+    console.error("Error updating document:", error);
     throw error;
   }
 };
@@ -439,4 +510,7 @@ export default {
   getAllJobs, // Updated function
   getAllJobLocations, // New function
   getAllEvents, // Export the new function
+  getAttendedEvents, // Export the new function
+  cancelAttendance, // Export the new function
+  updateEventDoc, // Export the renamed function
 };

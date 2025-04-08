@@ -17,7 +17,11 @@
     ],
     "pendingFriendRequests": [],
     "location": "Atlanta, GA",
-    "company": "HealthFirst"
+    "company": "HealthFirst",
+    "attendedEvents": [
+      "0be01ae1-d324-4fd0-a6b0-831224987a2b",
+      "e00fbf9a-83ba-4f07-a009-aebcbeaf6153"
+    ]
   },
   "6f6dfd76-8642-4f97-b8e5-598c698b7e60": {
     "connections": [
@@ -46,7 +50,10 @@
       "149de66d-83c0-4aec-9af9-841fe4c563aa"
     ],
     "location": "Atlanta, GA",
-    "company": "SecureNet"
+    "company": "SecureNet",
+    "attendedEvents": [
+      "b0b1c006-de69-4152-a53d-4fd1cfe5bc67"
+    ]
   },
   "d79ab5e6-e367-401f-b65a-e64c67284ad7": {
     "connections": [
@@ -72,7 +79,8 @@
       "899c259a-c5c7-447c-b2d7-8d72372e2f56"
     ],
     "location": "Denver, CO",
-    "company": "FinServe"
+    "company": "FinServe",
+    "attendedEvents": []
   },
   "dd4d7ebd-248d-4522-af27-702b7bf1b916": {
     "connections": [
@@ -100,7 +108,8 @@
       "f290e25c-b359-4184-aac3-f3e30d21cf20"
     ],
     "location": "Boston, MA",
-    "company": "HealthFirst"
+    "company": "HealthFirst",
+    "attendedEvents": []
   },
   "efb0d7ed-6f53-4160-a0a5-7d412e87bd5f": {
     "connections": [
@@ -131,7 +140,10 @@
       "26345f7f-fa0f-4519-ab97-e4d405791b51"
     ],
     "location": "Seattle, WA",
-    "company": "InnovateX"
+    "company": "InnovateX",
+    "attendedEvents": [
+      "0be01ae1-d324-4fd0-a6b0-831224987a2b"
+    ]
   },
   "d1b5d17d-cf30-411e-9ee2-d9f4ae5c31ff": {
     "connections": [
@@ -157,7 +169,8 @@
       "d980c7eb-2eb9-49ea-a304-df13ede9aabf"
     ],
     "location": "Seattle, WA",
-    "company": "HealthFirst"
+    "company": "HealthFirst",
+    "attendedEvents": []
   },
   "14731d06-758c-4ff2-a329-0419b0f713f8": {
     "connections": [
@@ -178,7 +191,8 @@
       "8305cc5a-55e4-42e9-817d-7efbeec84483"
     ],
     "location": "Atlanta, GA",
-    "company": "HealthFirst"
+    "company": "HealthFirst",
+    "attendedEvents": []
   },
   "cf9ba9bd-dbeb-49f7-824c-bd8586233771": {
     "connections": [
@@ -201,7 +215,8 @@
       "75ab87ae-fa46-44f1-8bde-7a44215b3bc1"
     ],
     "location": "Chicago, IL",
-    "company": "InnovateX"
+    "company": "InnovateX",
+    "attendedEvents": []
   },
   "8305cc5a-55e4-42e9-817d-7efbeec84483": {
     "connections": [
@@ -226,7 +241,8 @@
       "88a6d5cd-1aad-4091-8e20-027091f016a4"
     ],
     "location": "Atlanta, GA",
-    "company": "InnovateX"
+    "company": "InnovateX",
+    "attendedEvents": []
   },
   "c25eff97-72a3-4681-ae77-77721ef14b2d": {
     "connections": [
@@ -252,7 +268,8 @@
       "83de1361-662e-44dd-9549-f6061994c7fa"
     ],
     "location": "Boston, MA",
-    "company": "TechCorp"
+    "company": "TechCorp",
+    "attendedEvents": []
   },
   "75ab87ae-fa46-44f1-8bde-7a44215b3bc1": {
     "connections": [
@@ -282,7 +299,8 @@
       "5a8dfd11-cf1f-4642-a334-a5e6f0d28f8f"
     ],
     "location": "Chicago, IL",
-    "company": "TechCorp"
+    "company": "TechCorp",
+    "attendedEvents": []
   },
   "391f9b95-4bf7-4f5b-b621-e03abad8bfab": {
     "connections": [
@@ -301,7 +319,8 @@
       "7d287922-6153-4dbd-a2ec-7faa279dc276"
     ],
     "location": "Chicago, IL",
-    "company": "MediaMinds"
+    "company": "MediaMinds",
+    "attendedEvents": []
   },
   "4f3f4320-752f-4887-9848-830ec95cb821": {
     "connections": [
@@ -323,7 +342,8 @@
     ],
     "pendingFriendRequests": [],
     "location": "New York, NY",
-    "company": "EduWorld"
+    "company": "EduWorld",
+    "attendedEvents": []
   },
   "b6588389-cc4e-4eb5-ba57-4ee1b02de436": {
     "connections": [
@@ -347,7 +367,8 @@
       "fbd8cc8f-c34d-4d02-8b76-03b73dfe767a"
     ],
     "location": "Boston, MA",
-    "company": "FinServe"
+    "company": "FinServe",
+    "attendedEvents": []
   },
   "f73e0020-613e-4f4d-b4d3-3a232027fdc1": {
     "connections": [
@@ -378,7 +399,8 @@
       "dd4d7ebd-248d-4522-af27-702b7bf1b916"
     ],
     "location": "Austin, TX",
-    "company": "MediaMinds"
+    "company": "MediaMinds",
+    "attendedEvents": []
   },
   "44f0bf75-c755-4220-b683-aee7f10423fa": {
     "connections": [
@@ -399,7 +421,8 @@
     ],
     "pendingFriendRequests": [],
     "location": "Austin, TX",
-    "company": "HealthFirst"
+    "company": "HealthFirst",
+    "attendedEvents": []
   },
   "fa87aa9b-d731-46c8-a526-8582ca07c36a": {
     "connections": [
@@ -418,7 +441,8 @@
       "9e7de8a2-093c-4bef-b89b-3b2b2f7f536b"
     ],
     "location": "Denver, CO",
-    "company": "SecureNet"
+    "company": "SecureNet",
+    "attendedEvents": []
   },
   "4e3b913e-6b3e-4ec7-86bf-ef5cf53a01ed": {
     "connections": [
@@ -441,7 +465,8 @@
       "8560298f-3b53-41fa-a199-22047ab84844"
     ],
     "location": "San Francisco, CA",
-    "company": "GreenEnergy"
+    "company": "GreenEnergy",
+    "attendedEvents": []
   },
   "f290e25c-b359-4184-aac3-f3e30d21cf20": {
     "connections": [
@@ -466,7 +491,8 @@
       "83de1361-662e-44dd-9549-f6061994c7fa"
     ],
     "location": "Austin, TX",
-    "company": "EduWorld"
+    "company": "EduWorld",
+    "attendedEvents": []
   },
   "1de36d76-6add-4a80-bd46-477cfc40711d": {
     "connections": [
@@ -493,7 +519,8 @@
       "04a192b7-41fe-44a8-801b-dfdc34b4170e"
     ],
     "location": "Denver, CO",
-    "company": "EduWorld"
+    "company": "EduWorld",
+    "attendedEvents": []
   },
   "8e1ecd57-0cbb-4433-a7e9-5c597dde2566": {
     "connections": [
@@ -510,7 +537,8 @@
     "appliedJobs": [],
     "pendingFriendRequests": [],
     "location": "San Francisco, CA",
-    "company": "InnovateX"
+    "company": "InnovateX",
+    "attendedEvents": []
   },
   "ab2b0d99-bb35-44fa-be55-440b3c604946": {
     "connections": [
@@ -543,7 +571,8 @@
       "8a150567-d99f-4a29-9d3c-cdf274bea0fe"
     ],
     "location": "Seattle, WA",
-    "company": "EduWorld"
+    "company": "EduWorld",
+    "attendedEvents": []
   },
   "5dd437a1-f8c5-4e85-8368-e160d004a97f": {
     "connections": [
@@ -577,7 +606,8 @@
       "8560298f-3b53-41fa-a199-22047ab84844"
     ],
     "location": "San Francisco, CA",
-    "company": "HealthFirst"
+    "company": "HealthFirst",
+    "attendedEvents": []
   },
   "672bd092-6770-4f47-91eb-b8f922b3a66a": {
     "connections": [
@@ -607,7 +637,8 @@
       "f290e25c-b359-4184-aac3-f3e30d21cf20"
     ],
     "location": "Atlanta, GA",
-    "company": "InnovateX"
+    "company": "InnovateX",
+    "attendedEvents": []
   },
   "4bff7781-4f89-461c-9e8b-d8caf3d37c10": {
     "connections": [
@@ -627,7 +658,8 @@
     "appliedJobs": [],
     "pendingFriendRequests": [],
     "location": "Chicago, IL",
-    "company": "GreenEnergy"
+    "company": "GreenEnergy",
+    "attendedEvents": []
   },
   "d980c7eb-2eb9-49ea-a304-df13ede9aabf": {
     "connections": [
@@ -657,7 +689,8 @@
       "88e30076-ffde-4c1b-8d17-c2a8c1f0cd23"
     ],
     "location": "Atlanta, GA",
-    "company": "EduWorld"
+    "company": "EduWorld",
+    "attendedEvents": []
   },
   "149de66d-83c0-4aec-9af9-841fe4c563aa": {
     "connections": [
@@ -686,7 +719,8 @@
       "26345f7f-fa0f-4519-ab97-e4d405791b51"
     ],
     "location": "Boston, MA",
-    "company": "InnovateX"
+    "company": "InnovateX",
+    "attendedEvents": []
   },
   "c278a95b-da3f-4959-9b40-b9722ca82854": {
     "connections": [
@@ -711,7 +745,10 @@
       "4be7f63f-e5d5-4de4-b80f-3b04b3fb448a"
     ],
     "location": "Chicago, IL",
-    "company": "InnovateX"
+    "company": "InnovateX",
+    "attendedEvents": [
+      "b0b1c006-de69-4152-a53d-4fd1cfe5bc67"
+    ]
   },
   "9538555e-0c7b-4c24-9d2a-11f8c9f6c6e6": {
     "connections": [
@@ -736,7 +773,8 @@
       "0e0fffe5-8a24-43c1-9db3-4cf31a7e5ced"
     ],
     "location": "Chicago, IL",
-    "company": "MediaMinds"
+    "company": "MediaMinds",
+    "attendedEvents": []
   },
   "4be7f63f-e5d5-4de4-b80f-3b04b3fb448a": {
     "connections": [
@@ -758,7 +796,8 @@
       "391f9b95-4bf7-4f5b-b621-e03abad8bfab"
     ],
     "location": "San Francisco, CA",
-    "company": "InnovateX"
+    "company": "InnovateX",
+    "attendedEvents": []
   },
   "36259b96-6eb5-417f-be80-57e8497f43e6": {
     "connections": [
@@ -784,7 +823,8 @@
       "7d287922-6153-4dbd-a2ec-7faa279dc276"
     ],
     "location": "Seattle, WA",
-    "company": "InnovateX"
+    "company": "InnovateX",
+    "attendedEvents": []
   },
   "83de1361-662e-44dd-9549-f6061994c7fa": {
     "connections": [
@@ -807,7 +847,8 @@
     ],
     "pendingFriendRequests": [],
     "location": "Seattle, WA",
-    "company": "EduWorld"
+    "company": "EduWorld",
+    "attendedEvents": []
   },
   "8a150567-d99f-4a29-9d3c-cdf274bea0fe": {
     "connections": [
@@ -830,7 +871,8 @@
       "4f3f4320-752f-4887-9848-830ec95cb821"
     ],
     "location": "Atlanta, GA",
-    "company": "TechCorp"
+    "company": "TechCorp",
+    "attendedEvents": []
   },
   "0e0fffe5-8a24-43c1-9db3-4cf31a7e5ced": {
     "connections": [
@@ -854,7 +896,8 @@
       "58cc4635-ad0f-4c18-930d-7ff00a4d3895"
     ],
     "location": "Austin, TX",
-    "company": "MediaMinds"
+    "company": "MediaMinds",
+    "attendedEvents": []
   },
   "26345f7f-fa0f-4519-ab97-e4d405791b51": {
     "connections": [
@@ -878,7 +921,8 @@
     ],
     "pendingFriendRequests": [],
     "location": "Chicago, IL",
-    "company": "GreenEnergy"
+    "company": "GreenEnergy",
+    "attendedEvents": []
   },
   "716af571-c508-465e-b83f-953def374cb9": {
     "connections": [
@@ -900,7 +944,8 @@
       "8305cc5a-55e4-42e9-817d-7efbeec84483"
     ],
     "location": "Denver, CO",
-    "company": "GreenEnergy"
+    "company": "GreenEnergy",
+    "attendedEvents": []
   },
   "84e13132-3812-4f3a-90f9-279b4cf6aa4d": {
     "connections": [
@@ -927,7 +972,8 @@
     ],
     "pendingFriendRequests": [],
     "location": "Chicago, IL",
-    "company": "InnovateX"
+    "company": "InnovateX",
+    "attendedEvents": []
   },
   "7f939b71-4721-40fb-aa08-e87a145f2603": {
     "connections": [
@@ -953,7 +999,8 @@
       "149de66d-83c0-4aec-9af9-841fe4c563aa"
     ],
     "location": "New York, NY",
-    "company": "FinServe"
+    "company": "FinServe",
+    "attendedEvents": []
   },
   "6926ae98-ebdd-4e25-8571-50a64f7ef7ff": {
     "connections": [
@@ -980,7 +1027,8 @@
       "36259b96-6eb5-417f-be80-57e8497f43e6"
     ],
     "location": "Chicago, IL",
-    "company": "InnovateX"
+    "company": "InnovateX",
+    "attendedEvents": []
   },
   "b59a7dd9-5fde-4a62-b98a-3799984cbc8d": {
     "connections": [
@@ -1007,7 +1055,8 @@
       "26345f7f-fa0f-4519-ab97-e4d405791b51"
     ],
     "location": "Denver, CO",
-    "company": "SecureNet"
+    "company": "SecureNet",
+    "attendedEvents": []
   },
   "5a8dfd11-cf1f-4642-a334-a5e6f0d28f8f": {
     "connections": [
@@ -1037,7 +1086,8 @@
       "8305cc5a-55e4-42e9-817d-7efbeec84483"
     ],
     "location": "Seattle, WA",
-    "company": "MediaMinds"
+    "company": "MediaMinds",
+    "attendedEvents": []
   },
   "6da6286a-d555-4d05-83eb-11b488dc708b": {
     "connections": [
@@ -1066,7 +1116,8 @@
       "83de1361-662e-44dd-9549-f6061994c7fa"
     ],
     "location": "San Francisco, CA",
-    "company": "EduWorld"
+    "company": "EduWorld",
+    "attendedEvents": []
   },
   "19ceaa0e-d525-4dbf-a5f5-05834903ea7a": {
     "connections": [
@@ -1094,7 +1145,8 @@
       "4e3b913e-6b3e-4ec7-86bf-ef5cf53a01ed"
     ],
     "location": "New York, NY",
-    "company": "InnovateX"
+    "company": "InnovateX",
+    "attendedEvents": []
   },
   "58cc4635-ad0f-4c18-930d-7ff00a4d3895": {
     "connections": [
@@ -1119,7 +1171,8 @@
       "88e30076-ffde-4c1b-8d17-c2a8c1f0cd23"
     ],
     "location": "Atlanta, GA",
-    "company": "TechCorp"
+    "company": "TechCorp",
+    "attendedEvents": []
   },
   "88e30076-ffde-4c1b-8d17-c2a8c1f0cd23": {
     "connections": [
@@ -1149,7 +1202,10 @@
     ],
     "pendingFriendRequests": [],
     "location": "Chicago, IL",
-    "company": "SecureNet"
+    "company": "SecureNet",
+    "attendedEvents": [
+      "e00fbf9a-83ba-4f07-a009-aebcbeaf6153"
+    ]
   },
   "8560298f-3b53-41fa-a199-22047ab84844": {
     "connections": [
@@ -1174,7 +1230,8 @@
     ],
     "pendingFriendRequests": [],
     "location": "Boston, MA",
-    "company": "EduWorld"
+    "company": "EduWorld",
+    "attendedEvents": []
   },
   "04a192b7-41fe-44a8-801b-dfdc34b4170e": {
     "connections": [
@@ -1201,7 +1258,8 @@
       "14731d06-758c-4ff2-a329-0419b0f713f8"
     ],
     "location": "Boston, MA",
-    "company": "SecureNet"
+    "company": "SecureNet",
+    "attendedEvents": []
   },
   "cd664690-dd5e-4e49-9d0b-8a1a0b91325a": {
     "connections": [
@@ -1225,7 +1283,8 @@
       "4e3b913e-6b3e-4ec7-86bf-ef5cf53a01ed"
     ],
     "location": "Denver, CO",
-    "company": "MediaMinds"
+    "company": "MediaMinds",
+    "attendedEvents": []
   },
   "0d98c508-a451-4efa-9798-7986d85bd862": {
     "connections": [
@@ -1250,7 +1309,8 @@
     ],
     "pendingFriendRequests": [],
     "location": "Seattle, WA",
-    "company": "SecureNet"
+    "company": "SecureNet",
+    "attendedEvents": []
   },
   "88a6d5cd-1aad-4091-8e20-027091f016a4": {
     "connections": [
@@ -1273,7 +1333,8 @@
     ],
     "pendingFriendRequests": [],
     "location": "Chicago, IL",
-    "company": "EduWorld"
+    "company": "EduWorld",
+    "attendedEvents": []
   },
   "899c259a-c5c7-447c-b2d7-8d72372e2f56": {
     "connections": [
@@ -1295,7 +1356,8 @@
       "9538555e-0c7b-4c24-9d2a-11f8c9f6c6e6"
     ],
     "location": "Seattle, WA",
-    "company": "GreenEnergy"
+    "company": "GreenEnergy",
+    "attendedEvents": []
   },
   "af589bdb-257a-48b5-8098-09fc46d57046": {
     "connections": [
@@ -1320,7 +1382,8 @@
       "0d98c508-a451-4efa-9798-7986d85bd862"
     ],
     "location": "Austin, TX",
-    "company": "TechCorp"
+    "company": "TechCorp",
+    "attendedEvents": []
   },
   "1980d3fe-6b33-48d3-8145-6fcd9baa6506": {
     "connections": [
@@ -1350,7 +1413,8 @@
       "efb0d7ed-6f53-4160-a0a5-7d412e87bd5f"
     ],
     "location": "Austin, TX",
-    "company": "InnovateX"
+    "company": "InnovateX",
+    "attendedEvents": []
   },
   "3521fb2d-21ff-4372-a8c0-fc4f8c786778": {
     "connections": [
@@ -1378,7 +1442,8 @@
       "fbd8cc8f-c34d-4d02-8b76-03b73dfe767a"
     ],
     "location": "Seattle, WA",
-    "company": "InnovateX"
+    "company": "InnovateX",
+    "attendedEvents": []
   },
   "03989f0a-4ae4-4ef2-bc9e-015d62dcaaec": {
     "connections": [
@@ -1404,7 +1469,8 @@
     ],
     "pendingFriendRequests": [],
     "location": "New York, NY",
-    "company": "GreenEnergy"
+    "company": "GreenEnergy",
+    "attendedEvents": []
   },
   "7d287922-6153-4dbd-a2ec-7faa279dc276": {
     "connections": [
@@ -1430,7 +1496,8 @@
       "899c259a-c5c7-447c-b2d7-8d72372e2f56"
     ],
     "location": "Boston, MA",
-    "company": "SecureNet"
+    "company": "SecureNet",
+    "attendedEvents": []
   },
   "0717d435-34bc-40a8-a1aa-0311f697925a": {
     "connections": [
@@ -1457,7 +1524,8 @@
     ],
     "pendingFriendRequests": [],
     "location": "Denver, CO",
-    "company": "SecureNet"
+    "company": "SecureNet",
+    "attendedEvents": []
   },
   "5682d2e1-f136-4948-af83-f4a933397b0f": {
     "connections": [
@@ -1485,7 +1553,8 @@
       "af589bdb-257a-48b5-8098-09fc46d57046"
     ],
     "location": "Boston, MA",
-    "company": "MediaMinds"
+    "company": "MediaMinds",
+    "attendedEvents": []
   },
   "fbd8cc8f-c34d-4d02-8b76-03b73dfe767a": {
     "connections": [
@@ -1511,7 +1580,8 @@
       "0717d435-34bc-40a8-a1aa-0311f697925a"
     ],
     "location": "New York, NY",
-    "company": "EduWorld"
+    "company": "EduWorld",
+    "attendedEvents": []
   },
   "6e0121e2-49e5-40a7-9013-5833e1a6bbd2": {
     "connections": [
@@ -1543,6 +1613,7 @@
       "4e3b913e-6b3e-4ec7-86bf-ef5cf53a01ed"
     ],
     "location": "Seattle, WA",
-    "company": "SecureNet"
+    "company": "SecureNet",
+    "attendedEvents": []
   }
 }

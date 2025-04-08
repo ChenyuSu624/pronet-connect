@@ -1,8 +1,10 @@
 .event-board {
+  gap: 20px;
   padding: 20px;
   font-family: Arial, sans-serif;
   max-width: 1200px;
   margin: 0 auto;
+  height: auto;
 }
 
 .header {
@@ -41,6 +43,7 @@
   align-items: center;
   justify-content: center;
   font-size: 14px; /* Adjust font size to fit */
+  font-style: bold;
 }
 
 .create-event:hover {
@@ -84,22 +87,24 @@
   gap: 10px; /* Add gap between arrow buttons and event cards */
 }
 
-.carousel-arrow {
-  width: 24px;
-  height: 24px;
-  background: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
+.carousel-arrow,
+.attended-arrow {
+  width: 50px; /* Ensure consistent width */
+  height: 50px; /* Ensure consistent height */
   display: flex;
-  align-items: center;
   justify-content: center;
-  cursor: pointer;
+  align-items: center;
 }
 
-.carousel-arrow:hover {
-  background: #0056b3;
+.carousel-arrow.hidden-arrow,
+.attended-arrow.hidden-arrow {
+  visibility: hidden; /* Hide the arrow but keep its space */
+}
+
+.carousel-arrow:disabled,
+.attended-arrow:disabled {
+  opacity: 0.5; /* Dim the arrow when disabled */
+  cursor: not-allowed;
 }
 
 .event-cards {
@@ -110,12 +115,15 @@
 }
 
 .event-card {
-  background: #fff;
-  border: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 250px; /* Set a fixed width for event cards */
+  height: 300px; /* Set a fixed height for event cards */
+  padding: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  padding: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  flex: 0 0 30%;
+  background-color: #fff;
 }
 
 .event-info {
@@ -126,24 +134,51 @@
   margin: 10px 0;
 }
 
+.event-info p {
+  font-size: 13px; /* Reduce font size for description */
+}
+
 .event-footer {
+  margin-top: auto; /* Push the footer to the bottom */
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-top: 10px;
+  align-items: center; /* Vertically center all items, including RSVP button */
 }
 
 .rsvp-button {
   background-color: #007bff;
+  margin-top: 10px;
   color: white;
   border: none;
-  padding: 5px 10px;
+  width: 60px; /* Adjusted width */
+  height: 30px; /* Adjusted height */
   border-radius: 4px;
   cursor: pointer;
+  font-size: 12px; /* Adjust font size */
+  display: flex;
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
 }
 
 .rsvp-button:hover {
   background-color: #0056b3;
+}
+
+.cancel-button {
+  /* Reuse RSVP button styles */
+  all: unset;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #f44336; /* Example: red for cancel */
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.cancel-button:hover {
+  background-color: #d32f2f; /* Darker red on hover */
 }
 
 .upcoming-events h2 {
@@ -182,4 +217,75 @@
 
 .register-button:hover {
   background: #0056b3;
+}
+
+.attended-events {
+  margin-bottom: 30px;
+  margin-top: 20px;
+}
+
+.attended-events h2 {
+  margin-bottom: 15px;
+}
+
+.attended-carousel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px; /* Add gap between arrow buttons and event cards */
+}
+
+.attended-arrow {
+  width: 50px; /* Ensure consistent width */
+  height: 50px; /* Ensure consistent height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.attended-arrow.hidden-arrow {
+  visibility: hidden; /* Hide the arrow but keep its space */
+}
+
+.attended-arrow:disabled {
+  opacity: 0.5; /* Dim the arrow when disabled */
+  cursor: not-allowed;
+}
+
+.attended-cards {
+  display: flex;
+  gap: 20px;
+  overflow: hidden;
+  flex-wrap: nowrap;
+}
+
+.attended-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 250px; /* Set a fixed width for event cards */
+  height: 300px; /* Set a fixed height for event cards */
+  padding: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.attended-info {
+  margin-bottom: 10px;
+}
+
+.attended-info h3 {
+  margin: 10px 0;
+}
+
+.attended-info p {
+  font-size: 14px; /* Reduce font size for description */
+}
+
+.attended-footer {
+  margin-top: auto; /* Push the footer to the bottom */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

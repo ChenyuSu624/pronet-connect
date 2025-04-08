@@ -359,7 +359,7 @@ const Dashboard = () => {
                 className="view-all-link"
                 onClick={(e) => {
                   e.preventDefault();
-                  navigate('/event-board', { state: { userId } }); // Navigate to EventBoard page with userId
+                  navigate('/event-board', { state: { userId } }); // Ensure userId is passed in state
                 }}
               >
                 View all
