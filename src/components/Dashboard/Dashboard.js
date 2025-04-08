@@ -4,7 +4,7 @@ import Navbar from '../Navbar/Navbar';
 import { FaUserCircle, FaPhotoVideo, FaVideo, FaCalendarAlt, FaThumbsUp, FaCommentAlt, FaShare } from 'react-icons/fa'; // Import required icons
 import { IoMdPersonAdd } from 'react-icons/io'; // Import IoMdPersonAdd icon
 import { IoTrashOutline } from "react-icons/io5"; // Import IoTrashOutline
-import { getUserById, getNonConnections, sendFriendRequest, getFeeds, addPost, deletePost, getRecommendedJobs, likePost } from '../../services/userService'; // Use named import for getUserById, getNonConnections, sendFriendRequest, getFeeds, addPost, deletePost, getRecommendedJobs, and likePost
+import { getUserById, getNonConnections, sendFriendRequest, getFeeds, addPost, deletePost, getRecommendedJobs, likePost, getAllEvents } from '../../services/userService'; // Use named import for getUserById, getNonConnections, sendFriendRequest, getFeeds, addPost, deletePost, getRecommendedJobs, likePost, and getAllEvents
 import './Dashboard.css';
 
 const Dashboard = () => {
@@ -15,6 +15,7 @@ const Dashboard = () => {
   const itemsPerPage = 4; // Number of feeds per page
   const [postContent, setPostContent] = useState(""); // State to store new post content
   const [recommendedJobs, setRecommendedJobs] = useState([]); // State to store recommended jobs
+  const [upcomingEvents, setUpcomingEvents] = useState([]); // State to store upcoming events
   const navigate = useNavigate(); // Initialize navigate function
   const location = useLocation(); // Access navigation state
   const userId = location.state?.userId; // Retrieve user ID from state
@@ -54,6 +55,23 @@ const Dashboard = () => {
     }).catch((error) => {
       console.error("Failed to fetch recommended jobs:", error);
     });
+
+    // Fetch upcoming events
+    const fetchUpcomingEvents = async () => {
+      try {
+        const events = await getAllEvents();
+        const today = new Date();
+        const sortedEvents = events
+          .filter(event => new Date(event.date) >= today) // Filter events after today
+          .sort((a, b) => new Date(a.date) - new Date(b.date)) // Sort by date
+          .slice(0, 2); // Get the two closest events
+        setUpcomingEvents(sortedEvents);
+      } catch (error) {
+        console.error("Failed to fetch upcoming events:", error);
+      }
+    };
+
+    fetchUpcomingEvents();
   }, [userId, navigate]);
 
   const fetchFeeds = async () => {
@@ -336,19 +354,25 @@ const Dashboard = () => {
           <section className="upcoming-events rightbar-panel">
             <div className="upcoming-events-header">
               <h3>Upcoming Events</h3>
-              <a href="#" className="view-all-link">View all</a>
+              <a
+                href="#"
+                className="view-all-link"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate('/event-board', { state: { userId } }); // Navigate to EventBoard page with userId
+                }}
+              >
+                View all
+              </a>
             </div>
             <ul className="event-list">
-              <li className="event-item">
-                <p className="event-title">Tech Conference 2025</p>
-                <p className="event-time">March 15-17, 2025</p>
-                <p className="event-location">San Francisco, CA</p>
-              </li>
-              <li className="event-item">
-                <p className="event-title">UX Design Workshop</p>
-                <p className="event-time">March 25, 2025</p>
-                <p className="event-location">Online Event</p>
-              </li>
+              {upcomingEvents.map((event, index) => (
+                <li className="event-item" key={index}>
+                  <p className="event-title">{event.title}</p>
+                  <p className="event-time">{event.date}</p>
+                  <p className="event-location">{event.location}</p>
+                </li>
+              ))}
             </ul>
           </section>
           <section className="people-you-may-know rightbar-panel">

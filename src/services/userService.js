@@ -404,6 +404,21 @@ export const getAllJobLocations = async () => {
   }
 };
 
+/**
+ * Fetch all events from the "events" collection.
+ * @returns {Promise<Array<Object>>} - Promise resolving to an array of all events.
+ */
+export const getAllEvents = async () => {
+  try {
+    const eventsSnapshot = await getDocs(collection(db, "events"));
+    const events = eventsSnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    return events;
+  } catch (error) {
+    console.error("Error fetching events:", error);
+    throw error;
+  }
+};
+
 export default {
   addUser,
   getAllUsers,
@@ -423,4 +438,5 @@ export default {
   getRecommendedJobs, // Export the new function
   getAllJobs, // Updated function
   getAllJobLocations, // New function
+  getAllEvents, // Export the new function
 };

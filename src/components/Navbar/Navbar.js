@@ -9,6 +9,7 @@ const Navbar = ({ onSearchChange, isSignupPage }) => {
   const isDashboardPage = location.pathname === '/dashboard'; // Check if on the dashboard page
   const isConnectionsPage = location.pathname === '/connections'; // Check if on the connections page
   const isPeopleUMayKnowPage = location.pathname === '/people-you-may-know'; // Check if on the PeopleUMayKnow page
+  const isEventBoardPage = location.pathname === '/event-board'; // Check if on the EventBoard page
   const isDashboardOrConnectionsPage = isDashboardPage || isConnectionsPage || isPeopleUMayKnowPage; // Combine conditions
 
   return (
@@ -44,7 +45,20 @@ const Navbar = ({ onSearchChange, isSignupPage }) => {
             </div>
           </div>
         )}
-        {!isSignupPage && !isDashboardOrConnectionsPage && !isJobBoardPage && (
+        {isEventBoardPage && !isSignupPage && (
+          <div className="navbar-dashboard">
+            <div className="navbar-dashboard-inline">
+              <input
+                type="text"
+                placeholder="Search event" // Update placeholder for EventBoard
+                className="searchbox"
+                onChange={onSearchChange} // Use onSearchChange for EventBoard
+              />
+              <FaUserCircle className="navbar-profile-icon" />
+            </div>
+          </div>
+        )}
+        {!isSignupPage && !isDashboardOrConnectionsPage && !isJobBoardPage && !isEventBoardPage && (
           <>
             <input
               type="text"

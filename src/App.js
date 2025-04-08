@@ -8,6 +8,7 @@ import Dashboard from './components/Dashboard/Dashboard'; // Import Dashboard co
 import Connections from './components/Connections/Connections'; // Import Connections component
 import PeopleUMayKnow from './components/Connections/PeopleUMayKnow'; // Import PeopleUMayKnow component
 import JobBoard from './components/JobBoard/JobBoard'; // Import JobBoard component
+import EventBoard from './components/EventBoard/EventBoard';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/connections" element={<Connections />} /> {/* Add Connections route */}
           <Route path="/people-you-may-know" element={<PeopleUMayKnow />} /> {/* Add PeopleUMayKnow route */}
           <Route path="/job-board" element={<JobBoard />} /> {/* Add Job Board route */}
+          <Route path="/event-board" element={<EventBoard />} /> {/* Add Event Board route */}
         </Routes>
       </div>
     </Router>
