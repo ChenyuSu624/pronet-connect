@@ -490,6 +490,57 @@ export const updateEventDoc = async (docId, updatedData) => {
   }
 };
 
+/**
+ * Add a job ID to the user's appliedJobs array.
+ * @param {string} userId - The ID of the user.
+ * @param {string} jobId - The ID of the job to add.
+ * @returns {Promise<void>}
+ */
+export const addJobToAppliedJobs = async (userId, jobId) => {
+  try {
+    const userDocRef = doc(db, "users", userId);
+    const userDocSnap = await getDoc(userDocRef);
+
+    if (!userDocSnap.exists()) {
+      throw new Error("User not found");
+    }
+
+    const appliedJobs = userDocSnap.data().appliedJobs || [];
+    if (!appliedJobs.includes(jobId)) {
+      appliedJobs.push(jobId);
+      await updateDoc(userDocRef, { appliedJobs });
+    }
+  } catch (error) {
+    console.error("Error adding job to appliedJobs:", error);
+    throw error;
+  }
+};
+
+/**
+ * Remove a job ID from the user's appliedJobs array.
+ * @param {string} userId - The ID of the user.
+ * @param {string} jobId - The ID of the job to remove.
+ * @returns {Promise<void>}
+ */
+export const removeJobFromAppliedJobs = async (userId, jobId) => {
+  try {
+    const userDocRef = doc(db, "users", userId);
+    const userDocSnap = await getDoc(userDocRef);
+
+    if (!userDocSnap.exists()) {
+      throw new Error("User not found");
+    }
+
+    const appliedJobs = userDocSnap.data().appliedJobs || [];
+    const updatedAppliedJobs = appliedJobs.filter((id) => id !== jobId);
+
+    await updateDoc(userDocRef, { appliedJobs: updatedAppliedJobs });
+  } catch (error) {
+    console.error("Error removing job from appliedJobs:", error);
+    throw error;
+  }
+};
+
 export default {
   addUser,
   getAllUsers,
@@ -513,4 +564,6 @@ export default {
   getAttendedEvents, // Export the new function
   cancelAttendance, // Export the new function
   updateEventDoc, // Export the renamed function
+  addJobToAppliedJobs, // Export the new function
+  removeJobFromAppliedJobs, // Export the new function
 };

@@ -144,17 +144,36 @@
 }
 
 .apply-button {
-  background: #007bff;
-  color: #fff;
+  font-size: 12px;
   border: none;
-  padding: 10px 15px;
   border-radius: 4px;
+  background-color: #007bff;
+  color: white;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: auto; /* Set a fixed width for consistency */
+  display: inline-block; /* Prevent the button from stretching */
+  text-align: center; /* Center the text inside the button */
+  padding: 5px 10px; /* Add padding for better appearance */
 }
 
-.apply-button:hover {
-  background: #0056b3;
+.apply-button.cancel-button {
+  background-color: red;
+  font-size: 12px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: auto; /* Set a fixed width for consistency */
+  display: inline-block; /* Prevent the button from stretching */
+  text-align: center; /* Center the text inside the button */
+  padding: 5px 10px; /* Add padding for better appearance */
 }
+/* 
+.apply-button:hover {
+  opacity: 0.9;
+} */
 
 .load-more {
   background: #f1f1f1;
@@ -204,4 +223,10 @@ select {
   border: 1px solid #ccc; /* Add a border for consistency */
   border-radius: 4px; /* Add rounded corners */
   box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.job-footer {
+  display: flex;
+  justify-content: flex-end; /* Align the button to the right */
+  margin-top: 15px; /* Add spacing above the footer */
 }

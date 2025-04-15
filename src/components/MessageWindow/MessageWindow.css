@@ -1,0 +1,80 @@
+.message-window {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 400px; /* Increased width */
+  height: 500px; /* Added height for a bigger window */
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.message-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background: #f5f5f5;
+  border-bottom: 1px solid #ccc;
+}
+
+.message-header .close-button {
+  padding: 5px 12px; /* Further adjusted padding */
+  width: auto; /* Ensure the width adjusts to content */
+  margin-top: 15px;
+  min-width: 20px; /* Set a smaller minimum width */
+}
+
+.message-body {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.message {
+  margin-bottom: 10px;
+  background: #fff; /* Add a white background to messages */
+  border-radius: 5px; /* Add rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+  padding: 8px; /* Add padding inside the message box */
+  display: inline-block; /* Allow the box to shrink or grow based on content */
+  max-width: 80%; /* Prevent the box from becoming too wide */
+  word-wrap: break-word; /* Ensure long words wrap to the next line */
+  align-self: flex-start; /* Default alignment to the left */
+  position: relative; /* Enable positioning for the sender label */
+}
+
+.message .sender-label {
+  font-weight: bold; /* Highlight the sender's name */
+  margin-right: 5px; /* Add spacing between the name and the message */
+  display: inline-block; /* Ensure it appears inline with the message */
+}
+
+.message.sent {
+  text-align: right;
+  align-self: flex-end; /* Align user's messages to the right */
+  float: right; /* Ensure the message sticks to the right */
+  clear: both; /* Prevent overlap with other messages */
+}
+
+.message-footer {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+}
+
+.message-footer input {
+  flex: 1;
+  padding: 5px;
+  margin-right: 5px;
+}
+
+.message-footer button {
+  padding: 5px 10px;
+  width: auto; /* Ensure the width adjusts to content */
+  margin-top: 15px;
+  min-width: 20px; /* Set a smaller minimum width */
+}

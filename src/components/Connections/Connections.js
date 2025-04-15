@@ -6,6 +6,7 @@ import { SlEnvolope } from "react-icons/sl"; // Replace SlEnvelope with SlEnvelo
 import { FaRegTrashCan } from 'react-icons/fa6'; // Import the FaRegTrashCan icon
 import { MdOutlinePersonPinCircle } from 'react-icons/md'; // Import the location icon
 import { getUserById, getConnectionsByIds, removeConnection } from '../../services/userService'; // Import removeConnection
+import MessageWindow from '../MessageWindow/MessageWindow'; // Import the MessageWindow component
 import './Connections.css';
 
 const Connections = () => {
@@ -17,6 +18,7 @@ const Connections = () => {
   const [searchQuery, setSearchQuery] = useState(''); // State for search query
   const [currentPage, setCurrentPage] = useState(1); // State for current page
   const itemsPerPage = 6; // Maximum cards per page
+  const [activeChat, setActiveChat] = useState(null); // State to track the active chat
 
   useEffect(() => {
     if (userId) {
@@ -59,6 +61,14 @@ const Connections = () => {
         })
         .catch((error) => console.error('Failed to remove connection:', error));
     }
+  };
+
+  const handleOpenChat = (connection) => {
+    setActiveChat(connection); // Set the active chat to the selected connection
+  };
+
+  const handleCloseChat = () => {
+    setActiveChat(null); // Close the chat window
   };
 
   const sortedConnections = [...connections].sort((a, b) => {
@@ -150,7 +160,10 @@ const Connections = () => {
                 </div>
               </div>
               <div className="connection-actions" style={{ marginTop: 'auto' }}>
-                <button className="message-button">
+                <button
+                  className="message-button"
+                  onClick={() => handleOpenChat(connection)} // Open chat window
+                >
                   <SlEnvolope style={{ marginRight: '5px' }} /> Message
                 </button>
                 <button
@@ -163,6 +176,12 @@ const Connections = () => {
             </div>
           ))}
         </div>
+        {activeChat && (
+          <MessageWindow
+            connection={activeChat}
+            onClose={handleCloseChat} // Pass the close handler
+          />
+        )}
         <div className="pagination-controls-connections">
           <button
             className="pagination-button-connections"

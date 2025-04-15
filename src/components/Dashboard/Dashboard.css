@@ -23,7 +23,7 @@
 }
 
 .dashboard-content {
-  width: 1200px;
+  width: 100%;
   display: flex;
   margin: 20px;
   flex: 1; /* Allow content to grow and shrink dynamically */
@@ -87,75 +87,48 @@
 }
 
 .post-input {
-  margin-bottom: 20px;
-  margin-top: 0; /* Remove top margin */
+  display: flex;
+  align-items: center; /* Vertically align items in the center */
+  gap: 12px; /* Space between input box and button */
   background-color: white;
   border-radius: 8px;
-  padding: 16px;
+  padding: 8px 16px; /* Adjust padding for better alignment */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-bottom: 16px;
 }
-
-.post-input-header {
+.post-input-header{
   display: flex;
-  align-items: center;
-  gap: 12px; /* Space between avatar and input box */
-}
-
-.post-input-avatar {
-  width: 50px; /* Increase avatar size */
-  height: 50px; /* Increase avatar size */
+  align-items: center; /* Center align header items */
+  justify-content: space-between; /* Space between header items */
+  width:100%;
 }
 
 .post-input-box {
-  flex-grow: 1;
+  flex: 3; /* Allocate 3/4 of the width */
   border: 1px solid #ddd;
-  border-radius: 20px;
+  border-radius: 8px;
   padding: 10px 16px;
   font-size: 14px;
   outline: none;
-}
-
-.post-input-actions {
+  height: 20px; /* Ensure consistent height with the button */
   display: flex;
-  justify-content: space-between;
-  vertical-align: center;
-  align-items: center; /* Vertically center align icons and post button */
-}
-
-.post-input-options {
-  display: flex;
-  gap: 8px; /* Space between option buttons */
-  align-items: center; /* Vertically center align icons */
-}
-
-.post-option-button {
-  background: none;
-  border: none;
-  color: #555;
-  font-size: 18px; /* Increase icon size */
-  cursor: pointer;
-}
-
-.post-option-button:hover {
-  color: #555; /* Ensure no color change on hover */
-  background: none; /* Ensure no background highlight on hover */
+  align-items: center; /* Center text vertically */
 }
 
 .post-submit-button {
+  flex: 1; /* Allocate 1/4 of the width */
   background-color: #007bff;
   color: white;
   border: none;
-  border-radius: 20px;
-  padding: 6px 12px; /* Reduce button size */
-  font-size: 12px; /* Smaller font size */
+  border-radius: 8px;
+  /* padding: 6px 12px; */
+  margin-top: 15px;
+  font-size: 14px; /* Match font size with input box */
   cursor: pointer;
-  width: 120px;
   transition: background-color 0.2s;
-  align-self: center; /* Ensure vertical alignment */
+  height: 40px; /* Match height with input box */
+  display: flex;
+  align-items: center; /* Center text vertically */
+  justify-content: center; /* Center text horizontally */
 }
 
 .post-submit-button:hover {
@@ -310,27 +283,39 @@
 .view-all-link:hover {
   text-decoration: underline;
 }
-.recommended-jobs rightbar-panel{
+
+.recommended-jobs rightbar-panel {
   display: flex;
-  flex-direction: column; /* Stack content vertically */
-  justify-content: center; /* Center content vertically */
-  align-items: center;/* Add padding for better spacing */
+  justify-content: space-between; /* Align items to opposite sides */
+  align-items: center;
+  width: 100%; /* Ensure it spans the full width of the panel */
 }
 
 .job-list {
-  display: block;
-  width: 100%; /* Match the width of the header */
-  max-width: 100%; /* Ensure it doesn't exceed the header width */
+  list-style: none; /* Remove bullet points */
   padding: 0; /* Remove padding */
   margin: 0; /* Remove margin */
+  width: 100%; /* Match the width of the container */
 }
 
 .job-item {
-  padding: 0px 10px;
-  border-radius: 8px;
-  background-color: #fff;
-  border: none; /* Ensure the border is removed */
-  box-shadow: none; /* Remove the shadow */
+  margin-bottom: 16px; /* Add spacing between jobs */
+  padding: 0; /* Remove padding */
+  background: none; /* Remove background color */
+  border: none; /* Remove border */
+  box-shadow: none; /* Remove shadow */
+}
+
+.job-title {
+  font-weight: bold; /* Bold the job title */
+  margin-bottom: 4px; /* Add spacing below the title */
+}
+
+.job-company,
+.job-date {
+  margin: 0; /* Ensure no extra margin */
+  font-size: 0.9em; /* Match font size with event details */
+  color: #555; /* Use a consistent color */
 }
 
 .upcoming-events-header {
@@ -538,7 +523,7 @@
   flex-wrap: nowrap; /* Ensure icons stay in one group */
   overflow: hidden; /* Prevent icons from going outside the panel */
   width: 100%; /* Ensure actions stay within the feed width */
-  box-sizing: border-box; /* Include padding and border in width calculation */
+  box-sizing: border-box; /* Include padding in width calculation */
 }
 
 .post-actions button {
@@ -598,18 +583,22 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;
+  gap: 4px; /* Reduce gap between buttons */
   margin-top: 16px;
+  padding: 0 8px; /* Reduce horizontal padding */
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 .page-number-button {
-  padding: 8px 12px;
+  padding: 4px 8px; /* Reduce padding for smaller buttons */
   border: 1px solid #ccc;
   background-color: #fff;
   cursor: pointer;
   border-radius: 4px;
-  font-size: 14px;
-  color: #555; /* Dark gray font for other page buttons */
+  font-size: 12px; /* Reduce font size */
+  color: #555;
 }
 
 .page-number-button.active {
@@ -620,10 +609,25 @@
 
 .page-number-button:hover:not(.active) {
   background-color: #f0f0f0;
-  color: #333; /* Slightly darker gray on hover */
+  color: #333;
+}
+
+.page-nav-button {
+  padding: 4px 12px; /* Reduce padding for navigation buttons */
+  border: 1px solid #007bff;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  font-size: 12px; /* Reduce font size */
+  cursor: pointer;
+}
+
+.page-nav-button:hover {
+  background-color: #0056b3;
 }
 
 .page-nav-button:disabled {
+  background-color: #ccc;
+  color: #666;
   cursor: not-allowed;
-  opacity: 0.5;
 }

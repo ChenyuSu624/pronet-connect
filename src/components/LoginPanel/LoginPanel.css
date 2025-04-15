@@ -99,14 +99,17 @@
 }
 
 .login-right h2 {
-  font-size: 2.2em;
-  color: #333;
+  text-align: center;
+  font-size: 36px; /* Match the font size of ProNet Connect */
+  font-family: 'Arial', sans-serif; /* Match the font family of ProNet Connect */
+  margin-bottom: 10px;
+  color: #000;
 }
 
 .login-right p {
-  font-size: 1em;
-  margin-bottom: 15px;
-  color: #666;
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 20px;
 }
 
 .login-right form {

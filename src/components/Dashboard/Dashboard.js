@@ -246,9 +246,9 @@ const Dashboard = () => {
           <div className="menu-panel">
             <nav className="sidebar-menu">
               <ul>
-                <li>Applications</li>
+                <li onClick={() => navigate('/job-board', { state: { userId } })}>Applications</li> {/* Navigate to JobBoard page */}
                 <li onClick={() => navigate('/connections', { state: { userId } })}>Connections</li> {/* Pass userId to Connections */}
-                <li>Events</li>
+                <li onClick={() => navigate('/event-board', { state: { userId } })}>Events</li> {/* Navigate to EventBoard page */}
               </ul>
               <button className="signout-button" onClick={handleSignOut}>Sign Out</button> {/* Add sign-out button */}
             </nav>
@@ -257,7 +257,7 @@ const Dashboard = () => {
         <main className="dashboard-feed" style={{ width: '60%', minWidth: '400px', maxWidth: '800px' }}>
           <div className="post-input">
             <div className="post-input-header">
-              <FaUserCircle className="post-input-avatar" />
+              {/* <FaUserCircle className="post-input-avatar" /> */}
               <input
                 type="text"
                 placeholder="Share your thoughts..."
@@ -267,11 +267,11 @@ const Dashboard = () => {
               />
             </div>
             <div className="post-input-actions">
-              <div className="post-input-options">
+              {/* <div className="post-input-options">
                 <button className="post-option-button"><FaPhotoVideo /></button>
                 <button className="post-option-button"><FaVideo /></button>
                 <button className="post-option-button"><FaCalendarAlt /></button>
-              </div>
+              </div> */}
               <button className="post-submit-button" onClick={handlePostSubmit}>Post</button> {/* Add post submit button */}
             </div>
           </div>
@@ -296,13 +296,13 @@ const Dashboard = () => {
                 {feed.image && <img src={feed.image} alt="Post" className="post-image" />}
                 <div className="post-actions">
                   <button onClick={() => handleLikePost(feed.id)}>
-                    <FaThumbsUp /> <span>{feed.likes?.length || 0} Likes</span>
+                    <FaThumbsUp /> <span>{feed.likes?.length || 0} </span>
                   </button>
                   <button>
-                    <FaCommentAlt /> <span>{feed.comments?.length || 0} Comments</span>
+                    <FaCommentAlt /> <span>{feed.comments?.length || 0} </span>
                   </button>
                   <button>
-                    <FaShare /> <span>Share</span>
+                    <FaShare /> <span></span>
                   </button>
                 </div>
               </div>
@@ -341,12 +341,12 @@ const Dashboard = () => {
                 View all
               </a>
             </div>
-            <ul className="job-list">
-              {recommendedJobs.map((job) => (
-                <li className="job-item" key={job.id}>
-                  <p className="job-title" style={{ fontWeight: 'bold' }}>{job.title || "Unknown Job Title"}</p>
-                  <p className="job-company" style={{ fontSize: '0.9em' }}>{job.company || "Unknown Company"} • {job.location || "Unknown Location"}</p>
-                  <p className="job-date" style={{ fontSize: '0.9em' }}>Posted {job.postedDate || "Unknown Date"}</p>
+            <ul className="event-list">
+              {recommendedJobs.map((job, index) => (
+                <li className="event-item" key={index}>
+                  <p className="job-title" >{job.title || "Unknown Job Title"}</p>
+                  <p className="job-company" >{job.company || "Unknown Company"} • {job.location || "Unknown Location"}</p>
+                  <p className="job-date" >Posted {job.postedDate || "Unknown Date"}</p>
                 </li>
               ))}
             </ul>

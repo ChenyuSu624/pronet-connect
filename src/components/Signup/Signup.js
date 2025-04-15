@@ -129,7 +129,7 @@ const Signup = () => {
               Already have an account? <Link to="/">Sign In</Link>
             </p>
           </div>
-        <div className="social-signup">
+        {/* <div className="social-signup">
           <p>Or continue with</p>
           <div className="social-buttons">
             <button className="google-btn">
@@ -139,7 +139,7 @@ const Signup = () => {
               <FaLinkedin style={{ fontSize: '18px', marginRight: '5px' }} /> LinkedIn
             </button>
           </div>
-        </div>
+        </div> */}
       </main>
       <footer className="signup-footer">
         <p>&copy; 2025 ProNet Connect. All rights reserved.</p>
