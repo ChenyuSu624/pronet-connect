@@ -32,7 +32,9 @@ const MessageWindow = ({ connection, currentUser, onClose }) => {
 
     // Listen for real-time updates to messages
     const unsubscribe = listenToMessages(chatId, (newChatHistory) => {
-      setChatHistory(newChatHistory);
+      // Sort messages in reverse order (latest messages at the bottom)
+      const sortedChatHistory = newChatHistory.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+      setChatHistory(sortedChatHistory);
     });
 
     return () => unsubscribe(); // Cleanup listener on component unmount
