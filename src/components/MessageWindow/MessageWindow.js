@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './MessageWindow.css';
 import { getOrCreateChat, sendMessage, listenToMessages, checkChatExists } from '../../services/chatService';
 
@@ -6,6 +6,7 @@ const MessageWindow = ({ connection, currentUser, onClose }) => {
   const [message, setMessage] = useState('');
   const [chatHistory, setChatHistory] = useState([]);
   const [chatId, setChatId] = useState(null);
+  const messageBodyRef = useRef(null); // Reference for the message body
 
   useEffect(() => {
     const initializeChat = async () => {
@@ -30,7 +31,15 @@ const MessageWindow = ({ connection, currentUser, onClose }) => {
     if (!chatId) return;
 
     // Listen for real-time updates to messages
-    const unsubscribe = listenToMessages(chatId, setChatHistory);
+    const unsubscribe = listenToMessages(chatId, (newChatHistory) => {
+      setChatHistory(newChatHistory);
+
+      // Scroll to the bottom when a new message is received
+      if (messageBodyRef.current) {
+        messageBodyRef.current.scrollTop = messageBodyRef.current.scrollHeight;
+      }
+    });
+
     return () => unsubscribe(); // Cleanup listener on component unmount
   }, [chatId]);
 
@@ -59,7 +68,7 @@ const MessageWindow = ({ connection, currentUser, onClose }) => {
         <h3>{connection?.firstName} {connection?.lastName}</h3>
         <button className="close-button" onClick={onClose}>X</button>
       </div>
-      <div className="message-body">
+      <div className="message-body" ref={messageBodyRef}>
         {chatHistory.map((chat, index) => (
           <div
             key={index}

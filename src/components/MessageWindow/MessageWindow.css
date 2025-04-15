@@ -60,6 +60,14 @@
   clear: both; /* Prevent overlap with other messages */
 }
 
+/* Ensure messages from other users stick to the left */
+.message.received {
+  text-align: left;
+  align-self: flex-start; /* Align received messages to the left */
+  float: left; /* Ensure the message sticks to the left */
+  clear: both; /* Prevent overlap with other messages */
+}
+
 .timestamp {
   font-size: 0.6rem; /* Make the font size smaller */
   color: #888; /* Use a lighter font color */
