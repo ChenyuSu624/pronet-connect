@@ -27,7 +27,7 @@ const Navbar = ({ onSearchChange }) => {
                 type="text"
                 placeholder={isConnectionsPage || isPeopleUMayKnowPage ? "Search people" : "Search jobs, people, or content..."} // Adjust placeholder
                 className="searchbox"
-                onChange={isConnectionsPage || isPeopleUMayKnowPage ? onSearchChange : undefined} // Call onSearchChange only on relevant pages
+                onChange={(event) => onSearchChange?.(event.target.value)} // Safely call onSearchChange
               />
               <FaUserCircle className="navbar-profile-icon" />
             </div>
@@ -40,7 +40,7 @@ const Navbar = ({ onSearchChange }) => {
                 type="text"
                 placeholder="Search jobs" // Update placeholder for JobBoard
                 className="searchbox"
-                onChange={onSearchChange} // Use onSearchChange for JobBoard
+                onChange={(event) => onSearchChange?.(event.target.value)} // Safely call onSearchChange
               />
               <FaUserCircle className="navbar-profile-icon" />
             </div>
@@ -53,7 +53,7 @@ const Navbar = ({ onSearchChange }) => {
                 type="text"
                 placeholder="Search event" // Update placeholder for EventBoard
                 className="searchbox"
-                onChange={onSearchChange} // Use onSearchChange for EventBoard
+                onChange={(event) => onSearchChange?.(event.target.value)} // Safely call onSearchChange
               />
               <FaUserCircle className="navbar-profile-icon" />
             </div>
@@ -65,6 +65,7 @@ const Navbar = ({ onSearchChange }) => {
               type="text"
               placeholder="Search jobs, people, or content..."
               className="navbar-search"
+              onChange={(event) => onSearchChange?.(event.target.value)} // Safely call onSearchChange
             />
             <FaUserCircle className="navbar-profile-icon" />
           </>

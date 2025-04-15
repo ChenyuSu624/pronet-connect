@@ -16,6 +16,7 @@ const Dashboard = () => {
   const [postContent, setPostContent] = useState(""); // State to store new post content
   const [recommendedJobs, setRecommendedJobs] = useState([]); // State to store recommended jobs
   const [upcomingEvents, setUpcomingEvents] = useState([]); // State to store upcoming events
+  const [searchQuery, setSearchQuery] = useState(""); // State to store search query
   const navigate = useNavigate(); // Initialize navigate function
   const location = useLocation(); // Access navigation state
   const userId = location.state?.userId; // Retrieve user ID from state
@@ -174,13 +175,17 @@ const Dashboard = () => {
   };
 
   const handlePageChange = (pageNumber) => {
-    if (pageNumber >= 1 && pageNumber <= Math.ceil(allFeeds.length / itemsPerPage)) {
-      setCurrentPage(pageNumber); // Update the current page
+    if (pageNumber >= 1 && pageNumber <= Math.ceil(filteredFeeds.length / itemsPerPage)) {
+      setCurrentPage(pageNumber); // Update the current page based on filtered feeds
     }
   };
 
+  const handleSearch = (query) => {
+    setSearchQuery(query); // Update the search query state
+  };
+
   const renderPageNumbers = () => {
-    const totalPages = Math.ceil(allFeeds.length / itemsPerPage);
+    const totalPages = Math.ceil(filteredFeeds.length / itemsPerPage); // Use filteredFeeds for total pages
     const pageNumbers = [];
 
     if (totalPages <= 5) {
@@ -225,16 +230,19 @@ const Dashboard = () => {
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const paginatedFeeds = allFeeds.slice(startIndex, endIndex);
+  const filteredFeeds = allFeeds.filter((feed) =>
+    feed.content.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+  const paginatedFeeds = filteredFeeds.slice(startIndex, endIndex);
 
   return (
     <div className="dashboard-container">
-      <Navbar isSignupPage={true} /> {/* Use the same Navbar style as on the Signup page */}
+      <Navbar isSignupPage={true} onSearchChange={handleSearch} /> {/* Pass the search handler to Navbar */}
       <div className="dashboard-content">
         <aside className="dashboard-sidebar">
           <div className="profile-panel">
             <div className="profile-section">
-              <FaUserCircle className="navbar-profile-icon" />
+              <FaUserCircle className="profile-pic" />
               <h2>{fullName || 'User'}</h2> {/* Display user's full name or fallback to 'User' */}
               <p>{user.jobTitle || 'Job Title'}</p> {/* Display user's job title or fallback */}
               <div className="profile-stats">
@@ -318,7 +326,7 @@ const Dashboard = () => {
               {renderPageNumbers()}
               <button
                 className="page-nav-button"
-                disabled={currentPage === Math.ceil(allFeeds.length / itemsPerPage)}
+                disabled={currentPage === Math.ceil(filteredFeeds.length / itemsPerPage)} // Use filteredFeeds for next button
                 onClick={() => handlePageChange(currentPage + 1)}
               >
                 Next

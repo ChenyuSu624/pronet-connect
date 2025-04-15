@@ -33,20 +33,27 @@ const MessageWindow = ({ connection, currentUser, onClose }) => {
     // Listen for real-time updates to messages
     const unsubscribe = listenToMessages(chatId, (newChatHistory) => {
       setChatHistory(newChatHistory);
-
-      // Scroll to the bottom when a new message is received
-      if (messageBodyRef.current) {
-        messageBodyRef.current.scrollTop = messageBodyRef.current.scrollHeight;
-      }
     });
 
     return () => unsubscribe(); // Cleanup listener on component unmount
   }, [chatId]);
 
+  useEffect(() => {
+    if (messageBodyRef.current) {
+      messageBodyRef.current.scrollTop = messageBodyRef.current.scrollHeight;
+    }
+  }, [chatHistory]); // Scroll to the bottom whenever chatHistory updates
+
   const handleSendMessage = async () => {
     if (message.trim() && chatId) {
       await sendMessage(chatId, currentUser.id, message);
       setMessage(''); // Clear the input field
+    }
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleSendMessage();
     }
   };
 
@@ -89,6 +96,7 @@ const MessageWindow = ({ connection, currentUser, onClose }) => {
           type="text"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
+          onKeyPress={handleKeyPress} // Bind Enter key to send message
           placeholder="Type a message..."
         />
         <button onClick={handleSendMessage}>Send</button>

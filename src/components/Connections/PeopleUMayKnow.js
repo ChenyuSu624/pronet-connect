@@ -40,8 +40,8 @@ const PeopleUMayKnow = () => {
       .catch((error) => console.error('Failed to send friend request:', error));
   };
 
-  const handleSearchChange = (event) => {
-    setSearchQuery(event.target.value.toLowerCase());
+  const handleSearchChange = (query) => {
+    setSearchQuery(query.toLowerCase()); // Update search query state
   };
 
   const filteredConnections = nonConnections.filter((person) =>

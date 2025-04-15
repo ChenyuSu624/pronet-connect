@@ -23,7 +23,7 @@
 }
 
 .dashboard-content {
-  width: 100%;
+  width: 110%;
   display: flex;
   margin: 20px;
   flex: 1; /* Allow content to grow and shrink dynamically */
@@ -483,6 +483,8 @@
   margin: 8px 0;
   font-size: 14px;
   line-height: 1.5;
+  text-align: left;
+  margin-left: 20px;
 }
 
 .post-image {
@@ -547,6 +549,7 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 10px 10px;
   border-radius: 8px;
+  width: 100%;
 }
 
 .delete-post-icon {
