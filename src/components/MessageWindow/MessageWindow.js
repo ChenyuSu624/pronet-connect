@@ -1,15 +1,47 @@
-import React, { useState } from 'react';
-import './MessageWindow.css'; // Import styles for the message window
+import React, { useState, useEffect } from 'react';
+import './MessageWindow.css';
+import { getOrCreateChat, sendMessage, listenToMessages, checkChatExists } from '../../services/chatService';
 
-const MessageWindow = ({ connection, onClose }) => {
+const MessageWindow = ({ connection, currentUser, onClose }) => {
   const [message, setMessage] = useState('');
-  const [chatHistory, setChatHistory] = useState([]); // State to store chat history
+  const [chatHistory, setChatHistory] = useState([]);
+  const [chatId, setChatId] = useState(null);
 
-  const handleSendMessage = () => {
-    if (message.trim()) {
-      setChatHistory([...chatHistory, { sender: 'You', text: message }]); // Add message to chat history
+  useEffect(() => {
+    const initializeChat = async () => {
+      const existingChat = await checkChatExists(currentUser.id, connection.id);
+      if (existingChat) {
+        setChatId(existingChat.id); // Use the existing chat ID
+      } else {
+        const newChatId = await getOrCreateChat(currentUser.id, connection.id);
+        setChatId(newChatId); // Create a new chat if it doesn't exist
+      }
+
+      // Listen for real-time updates to messages
+      const unsubscribe = listenToMessages(chatId, setChatHistory);
+      return () => unsubscribe(); // Cleanup listener on component unmount
+    };
+
+    initializeChat();
+  }, [currentUser.id, connection.id, chatId]);
+
+  const handleSendMessage = async () => {
+    if (message.trim() && chatId) {
+      await sendMessage(chatId, currentUser.id, message);
       setMessage(''); // Clear the input field
     }
+  };
+
+  const formatTimestamp = (timestamp) => {
+    const date = new Date(timestamp);
+    return date.toLocaleString('en-US', {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      hour12: true,
+    });
   };
 
   return (
@@ -20,8 +52,17 @@ const MessageWindow = ({ connection, onClose }) => {
       </div>
       <div className="message-body">
         {chatHistory.map((chat, index) => (
-          <div key={index} className={`message ${chat.sender === 'You' ? 'sent' : 'received'}`}>
-            {chat.text} <strong>: {chat.sender}</strong>
+          <div
+            key={index}
+            className={`message ${chat.senderId === currentUser.id ? 'sent' : 'received'}`}
+          >
+            <span className="sender-label">
+              {chat.senderId === currentUser.id ? 'You' : connection.firstName}:
+            </span> 
+            {chat.text}
+            <div className="timestamp">
+              {formatTimestamp(chat.timestamp)}
+            </div>
           </div>
         ))}
       </div>

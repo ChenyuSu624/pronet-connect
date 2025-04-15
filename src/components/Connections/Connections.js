@@ -179,7 +179,8 @@ const Connections = () => {
         {activeChat && (
           <MessageWindow
             connection={activeChat}
-            onClose={handleCloseChat} // Pass the close handler
+            currentUser={user} // Pass the current user
+            onClose={handleCloseChat}
           />
         )}
         <div className="pagination-controls-connections">

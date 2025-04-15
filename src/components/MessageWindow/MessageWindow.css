@@ -60,6 +60,12 @@
   clear: both; /* Prevent overlap with other messages */
 }
 
+.timestamp {
+  font-size: 0.6rem; /* Make the font size smaller */
+  color: #888; /* Use a lighter font color */
+  margin-top: 4px; /* Add some spacing above the timestamp */
+}
+
 .message-footer {
   display: flex;
   padding: 10px;
