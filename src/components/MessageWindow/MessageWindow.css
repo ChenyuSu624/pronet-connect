@@ -76,11 +76,14 @@
   flex: 1;
   padding: 5px;
   margin-right: 5px;
+  margin-top: 10px;
+  height: 20px; /* Reduced height */
 }
 
 .message-footer button {
   padding: 5px 10px;
   width: auto; /* Ensure the width adjusts to content */
-  margin-top: 15px;
+  margin-top: 12px;
+  height: 30px;
   min-width: 20px; /* Set a smaller minimum width */
 }

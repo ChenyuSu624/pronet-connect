@@ -9,6 +9,11 @@ const MessageWindow = ({ connection, currentUser, onClose }) => {
 
   useEffect(() => {
     const initializeChat = async () => {
+      if (!currentUser?.id || !connection?.id) {
+        console.error("Missing user IDs for chat initialization.");
+        return;
+      }
+
       const existingChat = await checkChatExists(currentUser.id, connection.id);
       if (existingChat) {
         setChatId(existingChat.id); // Use the existing chat ID
@@ -16,14 +21,18 @@ const MessageWindow = ({ connection, currentUser, onClose }) => {
         const newChatId = await getOrCreateChat(currentUser.id, connection.id);
         setChatId(newChatId); // Create a new chat if it doesn't exist
       }
-
-      // Listen for real-time updates to messages
-      const unsubscribe = listenToMessages(chatId, setChatHistory);
-      return () => unsubscribe(); // Cleanup listener on component unmount
     };
 
     initializeChat();
-  }, [currentUser.id, connection.id, chatId]);
+  }, [currentUser?.id, connection?.id]);
+
+  useEffect(() => {
+    if (!chatId) return;
+
+    // Listen for real-time updates to messages
+    const unsubscribe = listenToMessages(chatId, setChatHistory);
+    return () => unsubscribe(); // Cleanup listener on component unmount
+  }, [chatId]);
 
   const handleSendMessage = async () => {
     if (message.trim() && chatId) {
@@ -47,7 +56,7 @@ const MessageWindow = ({ connection, currentUser, onClose }) => {
   return (
     <div className="message-window">
       <div className="message-header">
-        <h3>{connection.firstName} {connection.lastName}</h3>
+        <h3>{connection?.firstName} {connection?.lastName}</h3>
         <button className="close-button" onClick={onClose}>X</button>
       </div>
       <div className="message-body">
@@ -57,7 +66,7 @@ const MessageWindow = ({ connection, currentUser, onClose }) => {
             className={`message ${chat.senderId === currentUser.id ? 'sent' : 'received'}`}
           >
             <span className="sender-label">
-              {chat.senderId === currentUser.id ? 'You' : connection.firstName}:
+              {chat.senderId === currentUser.id ? 'You' : connection?.firstName}:
             </span> 
             {chat.text}
             <div className="timestamp">
