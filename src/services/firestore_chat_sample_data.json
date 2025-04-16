@@ -1,0 +1,29 @@
+{
+    "4bff7781-4f89-461c-9e8b-d8caf3d37c10_9e7de8a2-093c-4bef-b89b-3b2b2f7f536b": {
+      "participants": [
+        "4bff7781-4f89-461c-9e8b-d8caf3d37c10",
+        "9e7de8a2-093c-4bef-b89b-3b2b2f7f536b"
+      ],
+      "createdAt": "2025-04-15T12:00:00.000Z",
+      "messages": {
+        "3e9a8f42-8f04-4bfc-9f1e-9c79b4a8e8a1": {
+          "senderId": "9e7de8a2-093c-4bef-b89b-3b2b2f7f536b",
+          "text": "Hi there!",
+          "timestamp": "2025-04-15T12:01:00.000Z",
+          "messageId": "3e9a8f42-8f04-4bfc-9f1e-9c79b4a8e8a1"
+        },
+        "a0cf26f2-3d1d-4d0e-a73f-5a5d702ab5b2": {
+          "senderId": "4bff7781-4f89-461c-9e8b-d8caf3d37c10",
+          "text": "Hello! How are you?",
+          "timestamp": "2025-04-15T12:02:00.000Z",
+          "messageId": "a0cf26f2-3d1d-4d0e-a73f-5a5d702ab5b2"
+        },
+        "b3fda746-5f4d-43c4-8d9d-63c490e4c839": {
+          "senderId": "9e7de8a2-093c-4bef-b89b-3b2b2f7f536b",
+          "text": "I'm good, thanks! What about you?",
+          "timestamp": "2025-04-15T12:03:00.000Z",
+          "messageId": "b3fda746-5f4d-43c4-8d9d-63c490e4c839"
+        }
+      }
+    }
+}

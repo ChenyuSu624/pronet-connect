@@ -1,5 +1,20 @@
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
 import { collection, addDoc, getDocs, doc, getDoc, updateDoc, deleteDoc, query, where, orderBy } from "firebase/firestore";
-import { db } from "../firebaseConfig/firebaseConfig";
+
+// New Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyDUiED5eo7S3o8e5i-IgcjXW4JqVIIitGo",
+  authDomain: "pronet-connect-840da.firebaseapp.com",
+  projectId: "pronet-connect-840da",
+  storageBucket: "pronet-connect-840da.firebasestorage.app",
+  messagingSenderId: "512096793576",
+  appId: "1:512096793576:web:d54622e6e9102128816a5d"
+};
+
+// Initialize Firebase app and Firestore
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 // Add a new user to the "users" collection
 export const addUser = async (userData) => {

@@ -1,9 +1,10 @@
 const admin = require('firebase-admin');
-const serviceAccount = require('../firebaseConfig/pronet-connect-firebase-firebase-adminsdk-fbsvc-7dec6b14da.json'); // Update with the correct path
+const serviceAccount = require('../firebaseConfig/pronet-connect-840da-firebase-adminsdk-fbsvc-eb1a6fefe3.json'); // Update with the correct path
 const sampleUserData = require('./firestore_user_sample_data.json');
 const sampleJobData = require('./firestore_job_sample_data.json');
 const sampleEventData = require('./firestore_events_sample_data.json');
 const sampleFeedData = require('./firestore_feeds_sample_data.json'); // Add this line to import feeds sample data
+const firestoreChatSampleData = require('./firestore_chat_sample_data.json'); // Add this line to import chats sample data
 
 // Initialize Firebase Admin SDK
 // Run node src/services/import.js to import sample data into the collections
@@ -99,11 +100,37 @@ async function importFeeds() {
   }
 }
 
+async function importChatSampleData() {
+  try {
+    for (const chatId in firestoreChatSampleData) {
+      if (firestoreChatSampleData.hasOwnProperty(chatId)) {
+        const chatData = firestoreChatSampleData[chatId];
+        const { messages, ...chatInfo } = chatData;
+
+        // Add chat document to the chats collection
+        await db.collection('chats').doc(chatId).set(chatInfo);
+
+        // Add messages as a subcollection
+        const messagesRef = db.collection('chats').doc(chatId).collection('messages');
+        for (const messageId in messages) {
+          if (messages.hasOwnProperty(messageId)) {
+            await messagesRef.doc(messageId).set(messages[messageId]);
+          }
+        }
+      }
+    }
+    console.log('Imported chat data successfully!');
+  } catch (error) {
+    console.error('Error importing chat data:', error);
+  }
+}
+
 async function importData() {
   await importUsers();
   await importJobs();
   await importEvents();
   await importFeeds(); // Add this line to include feeds import
+  await importChatSampleData(); // Add this line to include chats import
   console.log('All data import completed!');
 }
 

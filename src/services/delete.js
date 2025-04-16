@@ -1,5 +1,5 @@
 const admin = require('firebase-admin');
-const serviceAccount = require('../firebaseConfig/pronet-connect-firebase-firebase-adminsdk-fbsvc-7dec6b14da.json'); // Update with the correct path
+const serviceAccount = require('../firebaseConfig/pronet-connect-840da-firebase-adminsdk-fbsvc-eb1a6fefe3.json'); // Update with the correct path
 
 // Initialize Firebase Admin SDK
 // Run node src/services/delete.js to delete all data from the collections
@@ -37,4 +37,23 @@ async function deleteData() {
   }
 }
 
+async function deleteChatSampleData(db) {
+  const chatsCollection = db.collection('chats');
+  const snapshot = await chatsCollection.get();
+
+  for (const doc of snapshot.docs) {
+    // Delete messages subcollection
+    const messagesRef = doc.ref.collection('messages');
+    const messagesSnapshot = await messagesRef.get();
+    for (const messageDoc of messagesSnapshot.docs) {
+      await messageDoc.ref.delete();
+    }
+
+    // Delete chat document
+    await doc.ref.delete();
+  }
+}
+
 deleteData();
+
+module.exports = { deleteChatSampleData };

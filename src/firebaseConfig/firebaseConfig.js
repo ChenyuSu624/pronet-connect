@@ -3,12 +3,12 @@ import { getFirestore } from "firebase/firestore";
 
 // Your Firebase configuration object
 const firebaseConfig = {
-    apiKey: "AIzaSyALI4aMl74uOTa00x1ujGvDSuQkU_SQEKs",
-    authDomain: "pronet-connect-firebase.firebaseapp.com",
-    projectId: "pronet-connect-firebase",
-    storageBucket: "pronet-connect-firebase.firebasestorage.app",
-    messagingSenderId: "724552509061",
-    appId: "1:724552509061:web:ee22c092ed4d43dc136bec"
+    apiKey: "AIzaSyDUiED5eo7S3o8e5i-IgcjXW4JqVIIitGo",
+    authDomain: "pronet-connect-840da.firebaseapp.com",
+    projectId: "pronet-connect-840da",
+    storageBucket: "pronet-connect-840da.firebasestorage.app",
+    messagingSenderId: "512096793576",
+    appId: "1:512096793576:web:d54622e6e9102128816a5d"
   };
 
 // Initialize Firebase
