@@ -32,7 +32,7 @@ const MessageWindow = ({ connection, currentUser, onClose }) => {
 
     // Listen for real-time updates to messages
     const unsubscribe = listenToMessages(chatId, (newChatHistory) => {
-      setChatHistory(newChatHistory); // Directly set the chat history without additional sorting
+      setChatHistory(newChatHistory); // Update chat history with messages from the database
     });
 
     return () => unsubscribe(); // Cleanup listener on component unmount

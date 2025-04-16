@@ -61,7 +61,7 @@ export const sendMessage = async (chatId, senderId, text) => {
   await setDoc(doc(messagesRef, messageId), {
     senderId,
     text,
-    timestamp: new Date().toISOString(), // Use local date
+    timestamp: new Date().toISOString(), // Use Firestore server timestamp
   });
 
   // Update the message count in the chat document
@@ -76,7 +76,7 @@ export const sendMessage = async (chatId, senderId, text) => {
  */
 export const listenToMessages = (chatId, callback) => {
   const messagesRef = collection(db, "chats", chatId, "messages");
-  const q = query(messagesRef, orderBy("id", "asc")); // Sort by timestamp and then by messageId
+  const q = query(messagesRef, orderBy("messageId", "asc")); // Sort by messageId in ascending order
   return onSnapshot(q, (snapshot) => {
     const messages = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
     callback(messages); // Pass sorted messages to the callback
