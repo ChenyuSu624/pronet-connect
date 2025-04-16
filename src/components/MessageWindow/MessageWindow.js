@@ -32,9 +32,7 @@ const MessageWindow = ({ connection, currentUser, onClose }) => {
 
     // Listen for real-time updates to messages
     const unsubscribe = listenToMessages(chatId, (newChatHistory) => {
-      // Sort messages in reverse order (latest messages at the bottom)
-      const sortedChatHistory = newChatHistory.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
-      setChatHistory(sortedChatHistory);
+      setChatHistory(newChatHistory); // Directly set the chat history without additional sorting
     });
 
     return () => unsubscribe(); // Cleanup listener on component unmount
@@ -61,6 +59,9 @@ const MessageWindow = ({ connection, currentUser, onClose }) => {
 
   const formatTimestamp = (timestamp) => {
     const date = new Date(timestamp);
+    if (isNaN(date.getTime())) {
+      return "Invalid Date"; // Handle invalid timestamps gracefully
+    }
     return date.toLocaleString('en-US', {
       month: 'long',
       day: 'numeric',
