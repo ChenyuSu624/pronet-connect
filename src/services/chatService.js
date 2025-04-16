@@ -59,6 +59,7 @@ export const sendMessage = async (chatId, senderId, text) => {
   
   // Save the message
   await setDoc(doc(messagesRef, messageId), {
+    messageId,
     senderId,
     text,
     timestamp: new Date().toISOString(), // Use Firestore server timestamp
