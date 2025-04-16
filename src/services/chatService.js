@@ -1,5 +1,5 @@
 import { db } from "../firebaseConfig/firebaseConfig";
-import { collection, doc, getDoc, setDoc, addDoc, query, orderBy, onSnapshot, serverTimestamp } from "firebase/firestore";
+import { collection, doc, getDoc, setDoc, addDoc, query, orderBy, onSnapshot } from "firebase/firestore";
 import { v4 as uuidv4 } from "uuid";
 
 /**
@@ -17,7 +17,7 @@ export const getOrCreateChat = async (userId1, userId2) => {
     // Create the chat document if it doesn't exist
     await setDoc(chatDocRef, {
       participants: [userId1, userId2],
-      createdAt: serverTimestamp(), // Use Firestore server timestamp
+      createdAt: new Date().toISOString(), // Use local date
     });
   }
 
@@ -61,7 +61,7 @@ export const sendMessage = async (chatId, senderId, text) => {
   await setDoc(doc(messagesRef, messageId), {
     senderId,
     text,
-    timestamp: serverTimestamp(), // Use Firestore server timestamp
+    timestamp: new Date().toISOString(), // Use local date
   });
 
   // Update the message count in the chat document
@@ -76,7 +76,7 @@ export const sendMessage = async (chatId, senderId, text) => {
  */
 export const listenToMessages = (chatId, callback) => {
   const messagesRef = collection(db, "chats", chatId, "messages");
-  const q = query(messagesRef, orderBy("timestamp", "asc")); // Ascending order ensures latest message is at the bottom
+  const q = query(messagesRef, orderBy("id", "asc")); // Sort by timestamp and then by messageId
   return onSnapshot(q, (snapshot) => {
     const messages = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
     callback(messages); // Pass sorted messages to the callback
